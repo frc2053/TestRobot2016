@@ -2,8 +2,6 @@
 
 RollerControl::RollerControl(float speed, float target)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(Robot::intakeSubsystem.get());
 	timer.reset(new Timer());
 	timer->Reset();
@@ -49,6 +47,7 @@ bool RollerControl::IsFinished()
 // Called once after isFinished returns true
 void RollerControl::End()
 {
+	timer.reset();
 	Robot::intakeSubsystem->Intake(0);
 }
 

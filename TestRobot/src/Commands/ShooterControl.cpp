@@ -2,8 +2,6 @@
 
 ShooterControl::ShooterControl(float speed, float target)
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(Robot::shooterSubsystem.get());
 	timer.reset(new Timer());
 	timer->Reset();
@@ -51,6 +49,7 @@ bool ShooterControl::IsFinished()
 // Called once after isFinished returns true
 void ShooterControl::End()
 {
+	timer.reset();
 	Robot::shooterSubsystem->Shoot(0);
 }
 
