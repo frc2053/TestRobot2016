@@ -1,39 +1,45 @@
-#include "ExtendIntake.h"
+#include "IntakePneumaticsControl.h"
 
-ExtendIntake::ExtendIntake()
+IntakePneumaticsControl::IntakePneumaticsControl(bool inputDir)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(chassis);
 	Requires(Robot::intakeSubsystem.get());
+	direction = inputDir;
 }
 
 // Called just before this Command runs the first time
-void ExtendIntake::Initialize()
+void IntakePneumaticsControl::Initialize()
 {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ExtendIntake::Execute()
+void IntakePneumaticsControl::Execute()
 {
-	Robot::intakeSubsystem->SolenoidForward();
+	if(direction == true) {
+		Robot::intakeSubsystem->SolenoidForward();
+	}
+	if(direction == false) {
+		Robot::intakeSubsystem->SolenoidBackwards();
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ExtendIntake::IsFinished()
+bool IntakePneumaticsControl::IsFinished()
 {
 	return true;
 }
 
 // Called once after isFinished returns true
-void ExtendIntake::End()
+void IntakePneumaticsControl::End()
 {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ExtendIntake::Interrupted()
+void IntakePneumaticsControl::Interrupted()
 {
 
 }
