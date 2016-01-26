@@ -4,7 +4,7 @@
 IntakeSubsystem::IntakeSubsystem() : Subsystem("Intake Subsystem")
 {
 	intakeTalon = RobotMap::intakeSubsystemintakeTalon;
-	intakeSolenoid = RobotMap::intakeSubsystemintakeSolenoid;
+	intakeServo = RobotMap::intakeSubsystemintakeServo;
 }
 
 void IntakeSubsystem::InitDefaultCommand()
@@ -17,12 +17,10 @@ void IntakeSubsystem::Intake(float speed)
 	intakeTalon->Set(speed);
 }
 
-void IntakeSubsystem::SolenoidForward()
-{
-	intakeSolenoid->Set(intakeSolenoid->kForward);
+void IntakeSubsystem::SetServo(float pwm) {
+	intakeServo->Set(pwm);
 }
 
-void IntakeSubsystem::SolenoidBackwards()
-{
-	intakeSolenoid->Set(intakeSolenoid->kReverse);
+void IntakeSubsystem::SetServoAngle(float angle) {
+	intakeServo->SetAngle(angle);
 }

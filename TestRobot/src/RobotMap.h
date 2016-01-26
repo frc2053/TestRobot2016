@@ -20,9 +20,15 @@ public:
 	static std::shared_ptr<CANTalon> driveBaseSubsystembackLeftTalon;
 	static std::shared_ptr<CANTalon> driveBaseSubsystembackRightTalon;
 	static std::shared_ptr<RobotDrive> driveBaseSubsystemrobotDrive;
-	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalon;
+
+	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonLeft;
+	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonRight;
+	static std::shared_ptr<Servo> shooterSubsystemshooterServo;
+	static std::shared_ptr<Encoder> shooterSubsystemshooterLeftEncoder;
+	static std::shared_ptr<Encoder> shooterSubsystemshooterRightEncoder;
+
 	static std::shared_ptr<CANTalon> intakeSubsystemintakeTalon;
-	static std::shared_ptr<DoubleSolenoid> intakeSubsystemintakeSolenoid;
+	static std::shared_ptr<Servo> intakeSubsystemintakeServo;
 
 	static void init();
 };

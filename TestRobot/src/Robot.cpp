@@ -38,9 +38,9 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-	if() {
+	//if() {
 		selectedGoal->Start();
-	}
+	//}
 }
 
 void Robot::TeleopInit() {

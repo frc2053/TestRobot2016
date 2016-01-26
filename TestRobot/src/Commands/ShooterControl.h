@@ -7,7 +7,7 @@
 class ShooterControl: public Command
 {
 public:
-	ShooterControl(float speed, float time);
+	ShooterControl(float speed = 0, float time = 0);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -19,6 +19,8 @@ private:
 	float timeTarget;
 	float inputSpeed;
 	bool isDone;
+	bool buttonAPressed;
+	bool buttonBPressed;
 };
 
 #endif

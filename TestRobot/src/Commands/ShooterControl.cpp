@@ -3,30 +3,52 @@
 ShooterControl::ShooterControl(float speed, float target)
 {
 	Requires(Robot::shooterSubsystem.get());
+	printf("ShooterControl!\n");
 	timer.reset(new Timer());
-	timer->Reset();
-	timer->Start();
 	timeCurrent = 0;
 	timeTarget = target;
 	inputSpeed = speed;
 	isDone = false;
-
+	buttonAPressed = false;
+	buttonBPressed = false;
 }
 
 // Called just before this Command runs the first time
 void ShooterControl::Initialize()
 {
-
+	timer->Reset();
+	timer->Start();
+	timeCurrent = 0;
+	isDone = false;
+	buttonAPressed = false;
+	buttonBPressed = false;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
+	printf("ShooterControl Execute!\n");
+	buttonAPressed = Robot::oi->getgunnerJoystick()->GetRawButton(1);
+	buttonBPressed = Robot::oi->getgunnerJoystick()->GetRawButton(2);
+	printf("timerCurrent before!\n");
 	timeCurrent = timer->Get();
+	printf("timerCurrent after!\n");
 	if(timeTarget == 0) {
-		Robot::shooterSubsystem->Shoot(1);
-		isDone = true;
+		printf("i am here!");
+		if(buttonAPressed) {
+			printf("buttonAPressed!\n");
+			Robot::shooterSubsystem->Shoot(1);
+		}
+		else {
+			Robot::shooterSubsystem->Shoot(0);
+		}
 
+		if(buttonBPressed) {
+			Robot::shooterSubsystem->Shoot(-1);
+		}
+		else {
+			Robot::shooterSubsystem->Shoot(0);
+		}
 	}
 	else {
 		if(timeCurrent >= timeTarget) {
