@@ -19,9 +19,6 @@ private:
 	float timeTarget;
 	float inputSpeed;
 	bool isDone;
-	bool buttonAPressed;
-	bool buttonBPressed;
-	float axis;
 };
 
 #endif

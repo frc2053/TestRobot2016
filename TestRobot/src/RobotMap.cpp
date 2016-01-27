@@ -37,10 +37,11 @@ void RobotMap::init() {
     shooterSubsystemshooterTalonRight->SetFeedbackDevice(CANTalon::QuadEncoder);
     shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::ControlMode::kSpeed);
     shooterSubsystemshooterTalonRight->ConfigEncoderCodesPerRev(256);
-    shooterSubsystemshooterTalonRight->Set(300);
+    //shooterSubsystemshooterTalonRight->Set(300);
     shooterSubsystemshooterTalonRight->SetP(2);
 	shooterSubsystemshooterTalonRight->SetI(0);
 	shooterSubsystemshooterTalonRight->SetD(20);
+    //feed forward 1.41
 
     shooterSubsystemshooterServo.reset(new Servo(0));
 

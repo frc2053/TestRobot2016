@@ -6,9 +6,16 @@
 #include "Commands/RollerControl.h"
 
 OI::OI() {
+	driverJoystick.reset(new Joystick(0));
     gunnerJoystick.reset(new Joystick(1));
     
-    driverJoystick.reset(new Joystick(0));
+    buttonA.reset(new JoystickButton(gunnerJoystick.get(), 1));
+    buttonB.reset(new JoystickButton(gunnerJoystick.get(), 2));
+
+    buttonA->WhenPressed(new ShooterControl(1, 0));
+    buttonA->WhenReleased(new ShooterControl(0,0));
+    buttonB->WhenPressed(new ShooterControl(-1, 0));
+    buttonB->WhenReleased(new ShooterControl(0,0));
 }
 
 std::shared_ptr<Joystick> OI::getdriverJoystick() {
