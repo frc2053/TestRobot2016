@@ -7,8 +7,6 @@ ShooterSubsystem::ShooterSubsystem() : Subsystem("ShooterSubsystem") {
     shooterTalonLeft = RobotMap::shooterSubsystemshooterTalonLeft;
     shooterTalonRight = RobotMap::shooterSubsystemshooterTalonRight;
     shooterServo = RobotMap::shooterSubsystemshooterServo;
-    shooterEncoderLeft = RobotMap::shooterSubsystemshooterLeftEncoder;
-    shooterEncoderRight = RobotMap::shooterSubsystemshooterRightEncoder;
 }
 
 void ShooterSubsystem::InitDefaultCommand() {
@@ -29,10 +27,10 @@ void ShooterSubsystem::SetServoAngle(float angle) {
 	shooterServo->SetAngle(angle);
 }
 
-double ShooterSubsystem::GetEncoderRateLeft() {
-	return shooterEncoderLeft->GetRate();
+double ShooterSubsystem::GetEncoderVelocityLeft() {
+	return (shooterTalonLeft->GetEncVel() * -1) / 2;
 }
 
-double ShooterSubsystem::GetEncoderRateRight() {
-	return shooterEncoderRight->GetRate();
+double ShooterSubsystem::GetEncoderVelocityRight() {
+	return (shooterTalonRight->GetEncVel() * -1) / 2;
 }

@@ -11,8 +11,6 @@ std::shared_ptr<RobotDrive> RobotMap::driveBaseSubsystemrobotDrive;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonRight;
 std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServo;
-std::shared_ptr<Encoder> RobotMap::shooterSubsystemshooterRightEncoder;
-std::shared_ptr<Encoder> RobotMap::shooterSubsystemshooterLeftEncoder;
 
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemintakeTalon;
 std::shared_ptr<Servo> RobotMap::intakeSubsystemintakeServo;
@@ -36,9 +34,15 @@ void RobotMap::init() {
 
     shooterSubsystemshooterTalonLeft.reset(new CANTalon(1));
     shooterSubsystemshooterTalonRight.reset(new CANTalon(3));
+    shooterSubsystemshooterTalonRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::ControlMode::kSpeed);
+    shooterSubsystemshooterTalonRight->ConfigEncoderCodesPerRev(256);
+    shooterSubsystemshooterTalonRight->Set(300);
+    shooterSubsystemshooterTalonRight->SetP(2);
+	shooterSubsystemshooterTalonRight->SetI(0);
+	shooterSubsystemshooterTalonRight->SetD(20);
+
     shooterSubsystemshooterServo.reset(new Servo(0));
-    shooterSubsystemshooterLeftEncoder.reset(new Encoder(0, 1, false, Encoder::k2X));
-    shooterSubsystemshooterRightEncoder.reset(new Encoder(2, 3, false, Encoder::k2X));
 
     intakeSubsystemintakeTalon.reset(new CANTalon(4));
     intakeSubsystemintakeServo.reset(new Servo(1));

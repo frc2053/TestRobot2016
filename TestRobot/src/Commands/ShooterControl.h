@@ -21,6 +21,7 @@ private:
 	bool isDone;
 	bool buttonAPressed;
 	bool buttonBPressed;
+	float axis;
 };
 
 #endif
