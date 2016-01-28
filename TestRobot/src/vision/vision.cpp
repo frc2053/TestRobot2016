@@ -12,15 +12,18 @@
 	BLACK = cv::Scalar(0,0,0),
 	YELLOW = cv::Scalar(0, 255, 255),
 //	these are the threshold values in order
-	LOWER_BOUNDS = cv::Scalar(239,0,109),
-	UPPER_BOUNDS = cv::Scalar(300,255,240);
+	LOWER_BOUNDS = cv::Scalar(58,0,109),
+	UPPER_BOUNDS = cv::Scalar(93,255,240);
+
 
 //	the size for resing the image
 	const cv::Size resize = cv::Size(320,240);
+	const cv::Point centerOfCam = cv::Point(160, 120);
 
 //	ignore these
 	 cv::VideoCapture videoCapture;
-	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy;
+	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, rgb, matResize;
+	 Image* myImaqImage;
 
 //	Constants for known variables
 //	the height to the top of the target in first stronghold is 97 inches
@@ -42,6 +45,8 @@
 
 	 std::vector<std::vector<cv::Point>> contours;
 	 std::vector<std::vector<cv::Point>> selected;
+
+	 int i = 0;
 
 /**
  * @param angle a nonnormalized angle
@@ -68,11 +73,9 @@
 	//buttonPressed = Robot::oi->getDriveJoystick()->GetRawButton(5);
 	printf("IM AM IN PROCESS IMAGE!\n");
  	double x,y,targetX,targetY,distance,azimuth;
- //		frame counter
- 	int FrameCount = 0;
- //		only run for the specified time
- 	while(FrameCount < 100){
- 		std::cout << "frameCount: " << FrameCount << std::endl;
+ 	//int FrameCount = 0;
+ 	while(true) {
+ 		//std::cout << "frameCount: " << FrameCount << std::endl;
  		contours.clear();
  		selected.clear();
  //			capture from the axis camera
@@ -81,12 +84,13 @@
  		printf("after read\n");
  //			captures from a static file for testing
  		//matOriginal = cv::imread("/home/lvuser/original.png");
- 		cv::imwrite("/home/lvuser/original.jpg", matOriginal);
- 		cv::cvtColor(matOriginal,matHSV,cv::COLOR_BGR2HSV);
+ 		//cv::imwrite("/home/lvuser/original.jpg", matOriginal);
+ 		cv::resize(matOriginal, matResize, resize);
+ 		cv::cvtColor(matResize,matHSV,cv::COLOR_BGR2HSV);
  		cv::inRange(matHSV, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
  		cv::findContours(matThresh, contours, matHeirarchy, cv::RETR_EXTERNAL,
  				cv::CHAIN_APPROX_SIMPLE);
- 		std::cout << "Size of contours: " << contours.size() << std::endl;
+ 		//std::cout << "Size of contours: " << contours.size() << std::endl;
  //			make sure the contours that are detected are at least 20x20
  //			pixels with an area of 400 and an aspect ration greater then 1
  		//printf("looping\n");
@@ -99,36 +103,40 @@
 					selected.push_back(contours[i]);
 				}
  		}
- 		std::cout << "Size of selected: " << selected.size() << std::endl;
+ 		//std::cout << "Size of selected: " << selected.size() << std::endl;
  		for(unsigned int i = 0; i < selected.size(); i++){
  			cv::Rect rec = cv::boundingRect(selected[i]);
- 			std::cout << "looping on selected!" << std::endl;
- 			cv::rectangle(matOriginal, rec.br(), rec.tl(), BLACK);
+ 			//std::cout << "looping on selected!" << std::endl;
+ 			cv::rectangle(matResize, rec.br(), rec.tl(), BLACK);
  		}
  //			if there is only 1 target, then we have found the target we want
  		if(selected.size() == 1){
- 			std::cout << "selected is one!" << std::endl;
+ 			//std::cout << "selected is one!" << std::endl;
  			cv::Rect rec = cv::boundingRect(selected[0]);
  //				"fun" math brought to you by miss daisy (team 341)!
  			y = rec.br().y + rec.height / 2;
- 			y= -((2 * (y / matOriginal.cols)) - 1);
+ 			y= -((2 * (y / matResize.cols)) - 1);
  			distance = (TOP_TARGET_HEIGHT - TOP_CAMERA_HEIGHT) /
  					tan((y * VERTICAL_FOV / 2.0 + CAMERA_ANGLE) * PI / 180);
  //				angle to target...would not rely on this
  			targetX = rec.tl().x + rec.width / 2;
- 			targetX = (2 * (targetX / matOriginal.rows)) - 1;
+ 			targetX = (2 * (targetX / matResize.rows)) - 1;
  			azimuth = normalize360(targetX*HORIZONTAL_FOV /2.0 + 0);
  //				drawing info on target
  			cv::Point center =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2);
  			cv::Point centerw =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);
- 			cv::putText(matOriginal, ""+(int)distance, center, cv::FONT_HERSHEY_PLAIN, 1, BLACK);
- 			cv::putText(matOriginal, ""+(int)azimuth, centerw, cv::FONT_HERSHEY_PLAIN, 1, BLACK);
+ 			cv::putText(matResize, ""+(int)distance, center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
+ 			cv::putText(matResize, ""+(int)azimuth, centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
+ 			std::cout << "Center: " << center << std::endl;
+ 			std::cout << "Distance: " << cv::norm(centerOfCam.x - center.x) << std::endl;
  		}
  //			output an image for debugging
- 	 		cv::imwrite("/home/lvuser/output.jpg", matOriginal);
- 		FrameCount++;
- 	}
+ 		cvtColor(matResize, rgb, cv::COLOR_BGR2RGB, 0);
+ 		imaqArrayToImage(myImaqImage, matResize.data, matResize.cols, matResize.rows);
+ 		CameraServer::GetInstance()->SetImage(myImaqImage);
+ 		//FrameCount++;
  	//shouldRun = false;
+ 	}
 }
 
 /**
@@ -143,6 +151,9 @@
 	matThresh =  cv::Mat();
 	clusters =  cv::Mat();
 	matHeirarchy =  cv::Mat();
+	rgb = cv::Mat();
+	matResize = cv::Mat();
+	myImaqImage = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
 //		main loop of the program
 	while(shouldRun){
 		try {
@@ -158,6 +169,8 @@
 			}
 //				time to actually process the acquired images
 			processImage();
+	 		cv::imwrite("/home/lvuser/output.jpg", matOriginal);
+	 		cv::imwrite("/home/lvuser/outputrgb.jpg", rgb);
 		} catch (std::exception& e) {
 			std::cout << "MyException caught" << std::endl;
 			std::cout << e.what() << std::endl;

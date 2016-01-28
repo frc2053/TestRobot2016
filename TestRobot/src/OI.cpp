@@ -12,9 +12,9 @@ OI::OI() {
     buttonA.reset(new JoystickButton(gunnerJoystick.get(), 1));
     buttonB.reset(new JoystickButton(gunnerJoystick.get(), 2));
 
-    buttonA->WhenPressed(new ShooterControl(1, 0));
+    buttonA->WhenPressed(new ShooterControl(300, 0));
     buttonA->WhenReleased(new ShooterControl(0,0));
-    buttonB->WhenPressed(new ShooterControl(-1, 0));
+    buttonB->WhenPressed(new ShooterControl(-300, 0));
     buttonB->WhenReleased(new ShooterControl(0,0));
 }
 
