@@ -12,12 +12,15 @@ void ZeroYaw::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ZeroYaw::Execute() {
-	Robot::driveBaseSubsystem->imuRobot->ZeroYaw();
+	do {
+		Robot::driveBaseSubsystem->imuRobot->ZeroYaw();
+	}
+	while(1 == 0);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ZeroYaw::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true

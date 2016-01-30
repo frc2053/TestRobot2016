@@ -23,7 +23,7 @@
 
 //	ignore these
 	 cv::VideoCapture videoCapture;
-	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, rgb, matResize;
+	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, rgb, matResize, testingMat;
 	 Image* myImaqImage;
 
 //	Constants for known variables
@@ -47,7 +47,7 @@
 	 std::vector<std::vector<cv::Point>> contours;
 	 std::vector<std::vector<cv::Point>> selected;
 
-	 int i = 0;
+	 int pictureTaker = 0;
 
 /**
  * @param angle a nonnormalized angle
@@ -87,6 +87,7 @@
  		//matOriginal = cv::imread("/home/lvuser/original.png");
  		//cv::imwrite("/home/lvuser/original.jpg", matOriginal);
  		cv::resize(matOriginal, matResize, resize);
+ 		matOriginal.copyTo(testingMat);
  		cv::cvtColor(matResize,matHSV,cv::COLOR_BGR2HSV);
  		cv::inRange(matHSV, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
  		cv::findContours(matThresh, contours, matHeirarchy, cv::RETR_EXTERNAL,
@@ -131,6 +132,13 @@
  			std::cout << "Center: " << center << std::endl;
  			std::cout << "Distance: " << cv::norm(centerOfCam.x - center.x) << std::endl;
  		}
+ 		if(Robot::oi->getdriverJoystick()->GetRawButton(6)) {
+ 			std::stringstream ss;
+ 			ss << "/home/lvuser/testing" << pictureTaker << ".jpg";
+ 			std::string s = ss.str();
+ 			cv::imwrite(s, testingMat);
+ 		}
+ 		pictureTaker++;
  //			output an image for debugging
  		cvtColor(matResize, rgb, cv::COLOR_BGR2RGB, 0);
  		imaqArrayToImage(myImaqImage, matResize.data, matResize.cols, matResize.rows);
@@ -154,6 +162,7 @@
 	matHeirarchy =  cv::Mat();
 	rgb = cv::Mat();
 	matResize = cv::Mat();
+	testingMat = cv::Mat();
 	myImaqImage = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
 //		main loop of the program
 	while(shouldRun){
