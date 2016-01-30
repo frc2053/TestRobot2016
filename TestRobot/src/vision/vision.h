@@ -12,7 +12,10 @@
 
 void visionTest();
 void processImage();
-void normalize360();
+double normalize360(double angle);
+int getTargetX();
+int getDistance();
+
 
 
 #endif /* SRC_VISION_VISION_H_ */

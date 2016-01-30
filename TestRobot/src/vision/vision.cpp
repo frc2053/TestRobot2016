@@ -1,5 +1,5 @@
 #include <opencv2/opencv.hpp>
-#include <math.h>
+#include <cmath>
 #include <ctime>
 #include "../Robot.h"
 
@@ -19,6 +19,7 @@
 //	the size for resing the image
 	const cv::Size resize = cv::Size(320,240);
 	const cv::Point centerOfCam = cv::Point(160, 120);
+	cv::Point center;
 
 //	ignore these
 	 cv::VideoCapture videoCapture;
@@ -123,7 +124,7 @@
  			targetX = (2 * (targetX / matResize.rows)) - 1;
  			azimuth = normalize360(targetX*HORIZONTAL_FOV /2.0 + 0);
  //				drawing info on target
- 			cv::Point center =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2);
+ 			center =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2);
  			cv::Point centerw =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);
  			cv::putText(matResize, ""+(int)distance, center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			cv::putText(matResize, ""+(int)azimuth, centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
@@ -180,4 +181,12 @@
 //		make sure the java process quits when the loop finishes
 	videoCapture.release();
 	exit(0);
+}
+
+int getTargetX() {
+	return center.x;
+}
+
+int getDistance() {
+	return abs(centerOfCam.x - center.x);
 }
