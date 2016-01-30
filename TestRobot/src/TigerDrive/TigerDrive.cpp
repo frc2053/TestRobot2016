@@ -37,24 +37,22 @@ float TigerDrive::CalculateRotValue(float angle, float speed)
 	tooFarCCW = false;
 	calculatedRotate = 0;
 	imuYaw = getAdjYaw();
-	imuScaled = imuYaw + 1000;
-	scaledAngle = originalAngle + 1000;
-	//sets spin direction and degrees to rotate to
-	//printf("before\n");
-	if(imuScaled > (scaledAngle + angleTolerance))
-	{
-		tooFarCW = true;
-		spinDirection = -1;
-		degreesToAngle = imuScaled - scaledAngle;
-		//printf("tooFarCW is true\n");
-	}
-	//sets spin direction and degrees to rotate to
-	if(imuScaled < (scaledAngle - angleTolerance))
-	{
-		tooFarCCW = true;
-		spinDirection = 1;
-		degreesToAngle = scaledAngle - imuScaled;
-		//printf("tooFarCCW is true\n");
+
+	if((fabs(imuYaw - originalAngle) > angleTolerance) &&
+	   (fabs(imuYaw + 360 - originalAngle) > angleTolerance)) {
+		if (imuYaw > originalAngle)  {
+			tooFarCW = true;
+			spinDirection = -1;
+			degreesToAngle = imuYaw - originalAngle;
+	   //printf("tooFarCW is true\n");
+		}
+		else {
+			//sets spin direction and degrees to rotate to
+			tooFarCCW = true;
+			spinDirection = 1;
+			degreesToAngle = originalAngle - imuYaw;
+			//printf("tooFarCCW is true\n");
+		}
 	}
 	//printf("after\n");
 	//printf("imuScaled: %f3.2 scaledAngle: %f3.2 tolerance: %f3.2 degreesToAngle: %f3.2 \n", imuScaled, scaledAngle, angleTolerance, degreesToAngle);
