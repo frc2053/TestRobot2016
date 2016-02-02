@@ -15,6 +15,8 @@ std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServo;
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemintakeTalon;
 std::shared_ptr<Servo> RobotMap::intakeSubsystemintakeServo;
 
+std::shared_ptr<AnalogInput> RobotMap::driveBaseSubsystemrangeFinder;
+
 void RobotMap::init() {
     driveBaseSubsystemfrontLeftTalon.reset(new CANTalon(8));
     driveBaseSubsystemfrontRightTalon.reset(new CANTalon(6));
@@ -32,19 +34,26 @@ void RobotMap::init() {
     driveBaseSubsystemrobotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
     driveBaseSubsystemrobotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 
-    shooterSubsystemshooterTalonLeft.reset(new CANTalon(1));
+    shooterSubsystemshooterTalonLeft.reset(new CANTalon(4));
     shooterSubsystemshooterTalonRight.reset(new CANTalon(3));
-    shooterSubsystemshooterTalonRight->SetFeedbackDevice(CANTalon::QuadEncoder);
-    shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::ControlMode::kSpeed);
-    shooterSubsystemshooterTalonRight->ConfigEncoderCodesPerRev(256);
+    shooterSubsystemshooterTalonLeft->SetControlMode(CANTalon::kVoltage);
+    shooterSubsystemshooterTalonLeft->SetVoltageCompensationRampRate(24.0);
+
+    shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::kVoltage);
+    shooterSubsystemshooterTalonRight->SetVoltageCompensationRampRate(24.0);
+    //shooterSubsystemshooterTalonRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::ControlMode::kSpeed);
+    //shooterSubsystemshooterTalonRight->ConfigEncoderCodesPerRev(256);
     //shooterSubsystemshooterTalonRight->Set(300);
-    shooterSubsystemshooterTalonRight->SetP(2);
-	shooterSubsystemshooterTalonRight->SetI(0);
-	shooterSubsystemshooterTalonRight->SetD(20);
+    //shooterSubsystemshooterTalonRight->SetP(2);
+	//shooterSubsystemshooterTalonRight->SetI(0);
+	//shooterSubsystemshooterTalonRight->SetD(20);
     //feed forward 1.41
 
     shooterSubsystemshooterServo.reset(new Servo(0));
 
     intakeSubsystemintakeTalon.reset(new CANTalon(4));
     intakeSubsystemintakeServo.reset(new Servo(1));
+
+    driveBaseSubsystemrangeFinder.reset(new AnalogInput(0));
 }

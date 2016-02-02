@@ -15,7 +15,7 @@ void ShooterSubsystem::InitDefaultCommand() {
 
 void ShooterSubsystem::Shoot(float speed)
 {
-	//shooterTalonLeft->Set(speed);
+	shooterTalonLeft->Set(speed);
 	shooterTalonRight->Set(speed);
 }
 

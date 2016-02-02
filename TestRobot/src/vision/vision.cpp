@@ -127,8 +127,10 @@
  //				drawing info on target
  			center =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2);
  			cv::Point centerw =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);
- 			cv::putText(matResize, ""+(int)distance, center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
- 			cv::putText(matResize, ""+(int)azimuth, centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
+ 			int distanceX = center.x;
+ 			int distanceY = center.y;
+ 			cv::putText(matResize, std::to_string(distanceX), center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
+ 			cv::putText(matResize, std::to_string(distanceY), centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			std::cout << "Center: " << center << std::endl;
  			std::cout << "Distance: " << cv::norm(centerOfCam.x - center.x) << std::endl;
  		}
@@ -136,7 +138,7 @@
  			std::stringstream ss;
  			ss << "/home/lvuser/testing" << pictureTaker << ".jpg";
  			std::string s = ss.str();
- 			cv::imwrite(s, testingMat);
+ 			cv::imwrite(s, matResize);
  		}
  		pictureTaker++;
  //			output an image for debugging

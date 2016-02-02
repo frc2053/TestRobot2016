@@ -34,19 +34,15 @@ void GoalAlign::Execute()
 	std::cout << "TargetX: " << targetX << std::endl;
 	if(distance <= 160)
 	{
-		speed = 0.3;
+		speed = 0.4;
 	}
 	if(distance <= 80)
 	{
-		speed = 0.25;
+		speed = 0.3;
 	}
 	if(distance <= 40)
 	{
-		speed = 0.20;
-	}
-	if(distance <= 20)
-	{
-		speed = 0.18;
+		speed = 0.2;
 	}
 	if(targetX >= (centerX + tolerance)) {
 		inTolerance = false;

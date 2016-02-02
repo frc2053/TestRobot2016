@@ -10,6 +10,7 @@ DriveBaseSubsystem::DriveBaseSubsystem() : Subsystem("DriveBaseSubsystem") {
     backLeftTalon = RobotMap::driveBaseSubsystembackLeftTalon;
     backRightTalon = RobotMap::driveBaseSubsystembackRightTalon;
     robotDrive = RobotMap::driveBaseSubsystemrobotDrive;
+    rangeFinder = RobotMap::driveBaseSubsystemrangeFinder;
 	imuRobot = new AHRS(SPI::Port::kMXP);
 	tigerDrive = new TigerDrive(imuRobot);
 	IMU_Yaw = 0;
@@ -69,4 +70,8 @@ bool DriveBaseSubsystem::getIsRotDone()
 bool DriveBaseSubsystem::getIsRotDoneOverride()
 {
 	return tigerDrive->getisRotDoneOverride();
+}
+
+float DriveBaseSubsystem::getDistance() {
+	return rangeFinder->GetVoltage();
 }

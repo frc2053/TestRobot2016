@@ -28,6 +28,8 @@ public:
 	static std::shared_ptr<CANTalon> intakeSubsystemintakeTalon;
 	static std::shared_ptr<Servo> intakeSubsystemintakeServo;
 
+	static std::shared_ptr<AnalogInput> driveBaseSubsystemrangeFinder;
+
 	static void init();
 };
 #endif
