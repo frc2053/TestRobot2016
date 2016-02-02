@@ -29,6 +29,8 @@ void Robot::RobotInit() {
 	chooserGoal->AddObject("Do Nothing", new DoNothing());
 	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
 	chooserObstacle->AddObject("Do nothing", new DoNothing());
+	SmartDashboard::PutData("Goal Chooser", chooserGoal);
+	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
 
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
   }

@@ -7,16 +7,9 @@ class OI {
 private:
 	std::shared_ptr<Joystick> gunnerJoystick;
 	std::shared_ptr<Joystick> driverJoystick;
-	std::shared_ptr<JoystickButton> button2A;
-	std::shared_ptr<JoystickButton> button2B;
+
 	std::shared_ptr<JoystickButton> button2X;
 	std::shared_ptr<JoystickButton> button2Y;
-	std::shared_ptr<JoystickButton> button2LeftBumper;
-	std::shared_ptr<JoystickButton> button2RightBumper;
-	std::shared_ptr<JoystickButton> button2Back;
-	std::shared_ptr<JoystickButton> button2Start;
-	std::shared_ptr<JoystickButton> button2JoyLeft;
-	std::shared_ptr<JoystickButton> button2JoyRight;
 	std::shared_ptr<JoystickButton> button1LeftBumper;
 public:
 	OI();

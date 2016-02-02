@@ -1,10 +1,10 @@
 #ifndef DoNothing_H
 #define DoNothing_H
 
-#include "../CommandBase.h"
+#include "Commands/Subsystem.h"
 #include "WPILib.h"
 
-class DoNothing: public CommandBase
+class DoNothing: public Command
 {
 public:
 	DoNothing();
