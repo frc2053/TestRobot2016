@@ -1,6 +1,7 @@
 #include "Robot.h"
-#include "Commands/ShootHigh.h"
 #include "Commands/DrivableDefenseAuto.h"
+#include "Commands/ShootHighAuto.h"
+#include "Commands/DoNothing.h"
 #include "vision/vision.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
@@ -24,8 +25,10 @@ void Robot::RobotInit() {
 
 	chooserObstacle = new SendableChooser();
 	chooserGoal = new SendableChooser();
-	chooserGoal->AddDefault("High Goal", new ShootHigh());
+	chooserGoal->AddDefault("High Goal", new ShootHighAuto());
+	chooserGoal->AddObject("Do Nothing", new DoNothing());
 	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
+	chooserObstacle->AddObject("Do nothing", new DoNothing());
 
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
   }
@@ -46,14 +49,18 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-	//if() {
+	if(selectedObstacle->IsRunning() == false) {
 		selectedGoal->Start();
-	//}
+	}
 }
 
 void Robot::TeleopInit() {
-	if (autonomousCommand != nullptr)
-		autonomousCommand->Cancel();
+	if (selectedObstacle != nullptr) {
+		selectedObstacle->Cancel();
+	}
+	if (selectedGoal != nullptr) {
+		selectedGoal->Cancel();
+	}
 }
 
 void Robot::TeleopPeriodic() {

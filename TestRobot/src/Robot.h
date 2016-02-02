@@ -30,7 +30,6 @@ public:
 private:
 	SendableChooser* chooserObstacle;
 	SendableChooser* chooserGoal;
-	Command* autonomousCommand;
 	Command* obstacleCommand;
 	Command* goalCommand;
 	Command* selectedObstacle;
