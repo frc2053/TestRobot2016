@@ -73,5 +73,5 @@ bool DriveBaseSubsystem::getIsRotDoneOverride()
 }
 
 float DriveBaseSubsystem::getDistance() {
-	return rangeFinder->GetVoltage();
+	return (rangeFinder->GetVoltage()) / .0098;
 }
