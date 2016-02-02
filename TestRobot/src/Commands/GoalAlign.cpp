@@ -22,6 +22,7 @@ void GoalAlign::Initialize()
 	adjyaw = 0;
 	distance = 0;
 	speed = 0;
+	SetTimeout(2);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -65,7 +66,7 @@ void GoalAlign::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool GoalAlign::IsFinished()
 {
-	return isDone;
+	return isDone || IsTimedOut();
 }
 
 // Called once after isFinished returns true
