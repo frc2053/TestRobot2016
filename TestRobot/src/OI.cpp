@@ -21,7 +21,7 @@ OI::OI() {
     button2Y->WhenPressed(new ShooterControl(7.8, 0));
     button2Y->WhenReleased(new ShooterControl(0, 0));
 
-    button2B->WhenPressed(new ShooterControl(-5, 0));
+    button2B->WhenPressed(new ShooterControl(-9, 0));
     button2B->WhenReleased(new ShooterControl(0, 0));
 
     button2X->WhenPressed(new ServoControl(0));

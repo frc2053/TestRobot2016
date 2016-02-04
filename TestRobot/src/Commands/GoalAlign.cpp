@@ -71,6 +71,7 @@ void GoalAlign::Execute()
 
 	bool tooClose = distanceY <= (distanceTarget - toleranceY);
 	bool tooFar = distanceY >= (distanceTarget + toleranceY);
+	std::cout << "distanceY: " << distanceY << std::endl;
 	std::cout << "tooClose: " << tooClose << std::endl;
 	std::cout << "tooFar: " << tooFar << std::endl;
 	if(tooClose) {

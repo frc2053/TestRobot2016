@@ -51,6 +51,8 @@
 
 	 int pictureTaker = 0;
 
+	 Image* image;
+
 /**
  * @param angle a nonnormalized angle
  */
@@ -144,6 +146,9 @@
  		}
  		pictureTaker++;
  //			output an image for debugging
+ 		//cv::imwrite("/var/volatile/tmp/opencv-frame.jpg", matOriginal);
+ 		//image = frcCreateImage(IMAQ_IMAGE_RGB);
+ 		//frcReadImage(image, "/var/volatile/tmp/opencv-frame.jpg");
  		cvtColor(matResize, rgb, cv::COLOR_BGR2RGB, 0);
  		imaqArrayToImage(myImaqImage, matResize.data, matResize.cols, matResize.rows);
  		CameraServer::GetInstance()->SetImage(myImaqImage);
