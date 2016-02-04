@@ -19,6 +19,15 @@ void ShooterSubsystem::Shoot(float speed)
 	shooterTalonRight->Set(speed);
 }
 
+void ShooterSubsystem::ShootLeftMotor(float speed)
+{
+	shooterTalonLeft->Set(speed);
+}
+
+void ShooterSubsystem::ShootRightMotor(float speed) {
+	shooterTalonRight->Set(speed);
+}
+
 void ShooterSubsystem::SetServo(float pwm) {
 	shooterServo->Set(pwm);
 }

@@ -20,6 +20,7 @@ public:
 	static std::shared_ptr<CANTalon> driveBaseSubsystembackLeftTalon;
 	static std::shared_ptr<CANTalon> driveBaseSubsystembackRightTalon;
 	static std::shared_ptr<RobotDrive> driveBaseSubsystemrobotDrive;
+	static std::shared_ptr<AnalogInput> driveBaseSubsystemrangeFinder;
 
 	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonLeft;
 	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonRight;
@@ -28,7 +29,12 @@ public:
 	static std::shared_ptr<CANTalon> intakeSubsystemintakeTalon;
 	static std::shared_ptr<Servo> intakeSubsystemintakeServo;
 
-	static std::shared_ptr<AnalogInput> driveBaseSubsystemrangeFinder;
+	static std::shared_ptr<CANTalon> climberSubsystemclimbTalonLeft;
+	static std::shared_ptr<CANTalon> climberSubsystemclimbTalonRight;
+
+	static std::shared_ptr<DigitalOutput> ledSubsystemGreenLED;
+	static std::shared_ptr<DigitalOutput> ledSubsystemRedLED;
+	static std::shared_ptr<DigitalOutput> ledSubsystemBlueLED;
 
 	static void init();
 };

@@ -7,6 +7,7 @@ std::shared_ptr<CANTalon> RobotMap::driveBaseSubsystemfrontRightTalon;
 std::shared_ptr<CANTalon> RobotMap::driveBaseSubsystembackLeftTalon;
 std::shared_ptr<CANTalon> RobotMap::driveBaseSubsystembackRightTalon;
 std::shared_ptr<RobotDrive> RobotMap::driveBaseSubsystemrobotDrive;
+std::shared_ptr<AnalogInput> RobotMap::driveBaseSubsystemrangeFinder;
 
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonRight;
@@ -15,13 +16,18 @@ std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServo;
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemintakeTalon;
 std::shared_ptr<Servo> RobotMap::intakeSubsystemintakeServo;
 
-std::shared_ptr<AnalogInput> RobotMap::driveBaseSubsystemrangeFinder;
+std::shared_ptr<CANTalon> RobotMap::climberSubsystemclimbTalonLeft;
+std::shared_ptr<CANTalon> RobotMap::climberSubsystemclimbTalonRight;
+std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemGreenLED;
+std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemRedLED;
+std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemBlueLED;
 
 void RobotMap::init() {
     driveBaseSubsystemfrontLeftTalon.reset(new CANTalon(8));
     driveBaseSubsystemfrontRightTalon.reset(new CANTalon(6));
     driveBaseSubsystembackLeftTalon.reset(new CANTalon(9));
     driveBaseSubsystembackRightTalon.reset(new CANTalon(2));
+    driveBaseSubsystemrangeFinder.reset(new AnalogInput(0));
     
     driveBaseSubsystemrobotDrive.reset(new RobotDrive(driveBaseSubsystemfrontLeftTalon, driveBaseSubsystembackLeftTalon,
               driveBaseSubsystemfrontRightTalon, driveBaseSubsystembackRightTalon));
@@ -55,5 +61,10 @@ void RobotMap::init() {
     intakeSubsystemintakeTalon.reset(new CANTalon(4));
     intakeSubsystemintakeServo.reset(new Servo(1));
 
-    driveBaseSubsystemrangeFinder.reset(new AnalogInput(0));
+    climberSubsystemclimbTalonLeft.reset(new CANTalon(5));
+    climberSubsystemclimbTalonRight.reset(new CANTalon(7));
+
+    ledSubsystemGreenLED.reset(new DigitalOutput(0));
+    ledSubsystemRedLED.reset(new DigitalOutput(1));
+    ledSubsystemBlueLED.reset(new DigitalOutput(2));
 }

@@ -13,6 +13,8 @@ public:
 	ShooterSubsystem();
 	void InitDefaultCommand();
 	void Shoot(float speed);
+	void ShootLeftMotor(float speed);
+	void ShootRightMotor(float speed);
 	void SetServo(float pwm);
 	void SetServoAngle(float angle);
 	double GetEncoderVelocityLeft();
