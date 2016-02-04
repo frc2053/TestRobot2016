@@ -15,6 +15,8 @@
 	LOWER_BOUNDS = cv::Scalar(58,0,109),
 	UPPER_BOUNDS = cv::Scalar(93,255,240);
 
+	double distance = 0;
+
 
 //	the size for resing the image
 	const cv::Size resize = cv::Size(320,240);
@@ -30,7 +32,7 @@
 //	the height to the top of the target in first stronghold is 97 inches
 	 const int TOP_TARGET_HEIGHT = 97;
 //	the physical height of the camera lens
-	 const int TOP_CAMERA_HEIGHT = 32;
+	 const int TOP_CAMERA_HEIGHT = 26;
 
 //	camera details, can usually be found on the datasheets of the camera
 	 const double VERTICAL_FOV  = 51;
@@ -73,16 +75,16 @@
  void processImage(){
 	//buttonPressed = Robot::oi->getDriveJoystick()->GetRawButton(5);
 	printf("IM AM IN PROCESS IMAGE!\n");
- 	double x,y,targetX,targetY,distance,azimuth;
+ 	double x,y,targetX,targetY,azimuth;
  	//int FrameCount = 0;
  	while(true) {
  		//std::cout << "frameCount: " << FrameCount << std::endl;
  		contours.clear();
  		selected.clear();
  //			capture from the axis camera
- 		printf("before read\n");
+ 		//printf("before read\n");
  		videoCapture.read(matOriginal);
- 		printf("after read\n");
+ 		//printf("after read\n");
  //			captures from a static file for testing
  		//matOriginal = cv::imread("/home/lvuser/original.png");
  		//cv::imwrite("/home/lvuser/original.jpg", matOriginal);
@@ -132,7 +134,7 @@
  			cv::putText(matResize, std::to_string(distanceX), center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			cv::putText(matResize, std::to_string(distanceY), centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			std::cout << "Center: " << center << std::endl;
- 			std::cout << "Distance: " << cv::norm(centerOfCam.x - center.x) << std::endl;
+ 			std::cout << "Distance: " << distance << std::endl;
  		}
  		if(Robot::oi->getdriverJoystick()->GetRawButton(6)) {
  			std::stringstream ss;
@@ -198,6 +200,15 @@ int getTargetX() {
 	return center.x;
 }
 
-int getDistance() {
+int getTargetY() {
+	return center.y;
+}
+
+int getDistanceY() {
+	return distance;
+}
+
+int getDistanceToCenter() {
 	return abs(centerOfCam.x - center.x);
 }
+

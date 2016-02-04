@@ -14,7 +14,9 @@ void visionTest();
 void processImage();
 double normalize360(double angle);
 int getTargetX();
-int getDistance();
+int getTargetY();
+int getDistanceToCenter();
+float getDistanceY();
 
 
 
