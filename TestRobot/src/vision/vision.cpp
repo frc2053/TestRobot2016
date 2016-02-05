@@ -27,7 +27,7 @@ VisionClass::VisionClass() {
   * reads an image from a live image capture and outputs information to the SmartDashboard or a file
   */
  void VisionClass::processImage(){
-	visionMutex.lock();
+
 	//buttonPressed = Robot::oi->getDriveJoystick()->GetRawButton(5);
 	printf("IM AM IN PROCESS IMAGE!\n");
  	double x,y,targetX,targetY,azimuth;
@@ -75,6 +75,7 @@ VisionClass::VisionClass() {
  //				"fun" math brought to you by miss daisy (team 341)!
  			y = rec.br().y + rec.height / 2;
  			y= -((2 * (y / matResize.cols)) - 1);
+ 			visionMutex.lock();
  			distance = (TOP_TARGET_HEIGHT - TOP_CAMERA_HEIGHT) /
  					tan((y * VERTICAL_FOV / 2.0 + CAMERA_ANGLE) * PI / 180);
  //				angle to target...would not rely on this
@@ -90,6 +91,7 @@ VisionClass::VisionClass() {
  			cv::putText(matResize, std::to_string(distanceY), centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			std::cout << "Center: " << center << std::endl;
  			std::cout << "Distance: " << distance << std::endl;
+ 			visionMutex.unlock();
  		}
  		/*if(Robot::oi->getdriverJoystick()->GetRawButton(6)) {
  			std::stringstream ss;
@@ -107,7 +109,6 @@ VisionClass::VisionClass() {
  		CameraServer::GetInstance()->SetImage(myImaqImage);
  		//FrameCount++;
  	//shouldRun = false;
- 	visionMutex.unlock();
  	}
 }
 
@@ -116,7 +117,7 @@ VisionClass::VisionClass() {
  * @param args command line arguments
  * just the main loop for the program and the entry points
  */
- void VisionClass::visionTest() {
+void VisionClass::visionTest() {
 	// TODO Auto-generated method stub
 	matOriginal =  cv::Mat();
 	matHSV =  cv::Mat();

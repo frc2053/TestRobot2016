@@ -15,8 +15,6 @@
 #include <ctime>
 #include "WPILib.h"
 
-std::mutex visionMutex;
-
 class VisionClass {
 public:
 	VisionClass();
@@ -29,6 +27,7 @@ public:
 	float getDistanceY();
 	VisionClass* visionClass;
 private:
+	std::mutex visionMutex;
 //	constants for the color rbg values
 	const cv::Scalar RED = cv::Scalar(0, 0, 255),
 	BLUE = cv::Scalar(255, 0, 0),

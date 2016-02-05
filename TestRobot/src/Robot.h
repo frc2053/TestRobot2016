@@ -29,7 +29,6 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
-	void Vision();
 private:
 	SendableChooser* chooserObstacle;
 	SendableChooser* chooserGoal;

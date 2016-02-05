@@ -10,9 +10,10 @@ std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
 Task* visionTask;
 
-void Robot::Vision() {
-	visionClass->visionTest();
+void Vision() {
+	Robot::visionClass->visionTest();
 }
+
 
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -33,7 +34,7 @@ void Robot::RobotInit() {
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
 
 	visionClass.reset(new VisionClass());
-	visionTask = new Task("Vision",(FUNCPTR)Robot::Vision(),Task::kDefaultPriority + 1);
+	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
   }
 
 void Robot::DisabledInit(){
