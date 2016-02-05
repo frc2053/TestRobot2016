@@ -2,7 +2,6 @@
 #define GoalAlign_H
 
 #include "Commands/Subsystem.h"
-#include "../vision/vision.h"
 #include "../Robot.h"
 
 class GoalAlign: public Command

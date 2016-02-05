@@ -1,62 +1,14 @@
-#include <opencv2/opencv.hpp>
-#include <cmath>
-#include <ctime>
-#include "../Robot.h"
-
-#define PI 3.14159265
-
-//	constants for the color rbg values
-	const cv::Scalar RED = cv::Scalar(0, 0, 255),
-	BLUE = cv::Scalar(255, 0, 0),
-	GREEN = cv::Scalar(0, 255, 0),
-	BLACK = cv::Scalar(0,0,0),
-	YELLOW = cv::Scalar(0, 255, 255),
-//	these are the threshold values in order
-	LOWER_BOUNDS = cv::Scalar(58,0,109),
-	UPPER_BOUNDS = cv::Scalar(93,255,240);
-
-	double distance = 0;
+#include "vision.h"
 
 
-//	the size for resing the image
-	const cv::Size resize = cv::Size(320,240);
-	const cv::Point centerOfCam = cv::Point(160, 120);
-	cv::Point center;
+VisionClass::VisionClass() {
 
-//	ignore these
-	 cv::VideoCapture videoCapture;
-	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, rgb, matResize, testingMat;
-	 Image* myImaqImage;
-
-//	Constants for known variables
-//	the height to the top of the target in first stronghold is 97 inches
-	 const int TOP_TARGET_HEIGHT = 97;
-//	the physical height of the camera lens
-	 const int TOP_CAMERA_HEIGHT = 26;
-
-//	camera details, can usually be found on the datasheets of the camera
-	 const double VERTICAL_FOV  = 51;
-	 const double HORIZONTAL_FOV  = 67;
-	 const double CAMERA_ANGLE = 10;
-
-	 bool shouldRun = true;
-
-	 int biggestArea = 0;
-	 int biggestAreaIndex = 0;
-
-	 bool buttonPressed = false;
-
-	 std::vector<std::vector<cv::Point>> contours;
-	 std::vector<std::vector<cv::Point>> selected;
-
-	 int pictureTaker = 0;
-
-	 Image* image;
+}
 
 /**
  * @param angle a nonnormalized angle
  */
- double normalize360(double angle){
+ double VisionClass::normalize360(double angle){
 	while(angle >= 360.0)
 	{
 		angle -= 360.0;
@@ -74,7 +26,8 @@
   *
   * reads an image from a live image capture and outputs information to the SmartDashboard or a file
   */
- void processImage(){
+ void VisionClass::processImage(){
+	visionMutex.lock();
 	//buttonPressed = Robot::oi->getDriveJoystick()->GetRawButton(5);
 	printf("IM AM IN PROCESS IMAGE!\n");
  	double x,y,targetX,targetY,azimuth;
@@ -138,12 +91,12 @@
  			std::cout << "Center: " << center << std::endl;
  			std::cout << "Distance: " << distance << std::endl;
  		}
- 		if(Robot::oi->getdriverJoystick()->GetRawButton(6)) {
+ 		/*if(Robot::oi->getdriverJoystick()->GetRawButton(6)) {
  			std::stringstream ss;
  			ss << "/home/lvuser/testing" << pictureTaker << ".jpg";
  			std::string s = ss.str();
  			cv::imwrite(s, matResize);
- 		}
+ 		}*/
  		pictureTaker++;
  //			output an image for debugging
  		//cv::imwrite("/var/volatile/tmp/opencv-frame.jpg", matOriginal);
@@ -154,6 +107,7 @@
  		CameraServer::GetInstance()->SetImage(myImaqImage);
  		//FrameCount++;
  	//shouldRun = false;
+ 	visionMutex.unlock();
  	}
 }
 
@@ -162,7 +116,7 @@
  * @param args command line arguments
  * just the main loop for the program and the entry points
  */
- void visionTest() {
+ void VisionClass::visionTest() {
 	// TODO Auto-generated method stub
 	matOriginal =  cv::Mat();
 	matHSV =  cv::Mat();
@@ -201,19 +155,19 @@
 	exit(0);
 }
 
-int getTargetX() {
+int VisionClass::getTargetX() {
 	return center.x;
 }
 
-int getTargetY() {
+int VisionClass::getTargetY() {
 	return center.y;
 }
 
-int getDistanceY() {
+float VisionClass::getDistanceY() {
 	return distance;
 }
 
-int getDistanceToCenter() {
+int VisionClass::getDistanceToCenter() {
 	return abs(centerOfCam.x - center.x);
 }
 

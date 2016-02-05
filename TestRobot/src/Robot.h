@@ -11,6 +11,7 @@
 
 #include "OI.h"
 #include "Subsystems/DriveBaseSubsystem.h"
+#include "vision/vision.h"
 
 class Robot : public IterativeRobot {
 public:
@@ -18,6 +19,7 @@ public:
     static std::shared_ptr<DriveBaseSubsystem> driveBaseSubsystem;
     static std::shared_ptr<ShooterSubsystem> shooterSubsystem;
     static std::shared_ptr<IntakeSubsystem> intakeSubsystem;
+    static std::shared_ptr<VisionClass> visionClass;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();
@@ -27,6 +29,7 @@ public:
 	virtual void TeleopInit();
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
+	void Vision();
 private:
 	SendableChooser* chooserObstacle;
 	SendableChooser* chooserGoal;

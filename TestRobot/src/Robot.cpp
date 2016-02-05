@@ -2,16 +2,16 @@
 #include "Commands/DrivableDefenseAuto.h"
 #include "Commands/ShootHighAuto.h"
 #include "Commands/DoNothing.h"
-#include "vision/vision.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;
 std::shared_ptr<IntakeSubsystem> Robot::intakeSubsystem;
+std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
 Task* visionTask;
 
-static void Vision(Robot* robot) {
-	visionTest();
+void Robot::Vision() {
+	visionClass->visionTest();
 }
 
 void Robot::RobotInit() {
@@ -32,7 +32,8 @@ void Robot::RobotInit() {
 	SmartDashboard::PutData("Goal Chooser", chooserGoal);
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
 
-	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
+	visionClass.reset(new VisionClass());
+	visionTask = new Task("Vision",(FUNCPTR)Robot::Vision(),Task::kDefaultPriority + 1);
   }
 
 void Robot::DisabledInit(){

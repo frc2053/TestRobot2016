@@ -34,11 +34,11 @@ void GoalAlign::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void GoalAlign::Execute()
 {
-	distanceToCenter = getDistanceToCenter();
-	distanceY = getDistanceY();
+	distanceToCenter = Robot::visionClass->getDistanceToCenter();
+	distanceY = Robot::visionClass->getDistanceY();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
-	targetX = getTargetX();
+	targetX = Robot::visionClass->getTargetX();
 	std::cout << "TargetX: " << targetX << std::endl;
 
 	if(distanceY >= 144) {
