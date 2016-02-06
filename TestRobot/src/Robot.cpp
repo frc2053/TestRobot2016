@@ -1,7 +1,9 @@
 #include "Robot.h"
 #include "Commands/DrivableDefenseAuto.h"
-#include "Commands/ShootHighAuto.h"
+#include "Commands/CenterGoalAuto.h"
 #include "Commands/DoNothing.h"
+#include "Commands/LeftGoalAuto.h"
+#include "Commands/RightGoalAuto.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;
@@ -26,9 +28,17 @@ void Robot::RobotInit() {
 
 	chooserObstacle = new SendableChooser();
 	chooserGoal = new SendableChooser();
-	chooserGoal->AddDefault("High Goal", new ShootHighAuto());
+
+	chooserGoal->AddDefault("Center Goal", new CenterGoalAuto());
+	chooserGoal->AddObject("Right Goal", new RightGoalAuto());
+	chooserGoal->AddObject("Left Goal", new LeftGoalAuto());
 	chooserGoal->AddObject("Do Nothing", new DoNothing());
+
 	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
+	//chooserObstacle->AddObject("Portcullis", new PortcullisControl());
+	//chooserObstacle->AddObject("Cheval De Frise", new ChevalControl());
+	//chooserObstacle->AddObject("Drawbridge", new DrawbridgeControl());
+	//chooserObstacle->AddObject("Sally Door", new SallyDoorControl());
 	chooserObstacle->AddObject("Do nothing", new DoNothing());
 	SmartDashboard::PutData("Goal Chooser", chooserGoal);
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);

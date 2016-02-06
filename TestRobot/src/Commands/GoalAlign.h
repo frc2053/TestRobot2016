@@ -17,17 +17,13 @@ private:
 	bool isDone;
 	int targetX;
 	bool inToleranceX;
-	bool inToleranceY;
 	const int toleranceX = 5;
 	const int centerX = 160; //pixels
-	const int toleranceY = 6; //inches
-	int distanceTarget = 120;
 	float calrot = 0;
 	float adjyaw = 0;
 	int distanceToCenter = 0;
-	float distanceY = 0;
 	float speedX = 0;
-	float speedY = 0;
+
 };
 
 #endif

@@ -4,7 +4,7 @@
 #include "Commands/DriveCommand.h"
 #include "Commands/ShooterControl.h"
 #include "Commands/RollerControl.h"
-#include "Commands/GoalAlign.h"
+#include "Commands/AlignVerticalAndHorizontal.h"
 #include "Commands/ZeroYaw.h"
 #include "Commands/ServoControl.h"
 
@@ -28,7 +28,7 @@ OI::OI() {
     button2X->WhenReleased(new ServoControl(1));
 
 
-    button1LeftBumper->WhenPressed(new GoalAlign());
+    button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal());
 
     SmartDashboard::PutData("ZeroYaw", new ZeroYaw());
 }
