@@ -10,7 +10,7 @@ GoalAlign::GoalAlign()
 	adjyaw = 0;
 	distanceToCenter = 0;
 	speedX = 0;
-
+	Robot::driveBaseSubsystem->isAlignedX = false;
 }
 
 // Called just before this Command runs the first time
@@ -23,14 +23,15 @@ void GoalAlign::Initialize()
 	adjyaw = 0;
 	distanceToCenter = 0;
 	speedX = 0;
+	Robot::driveBaseSubsystem->isAlignedX = false;
 	//SetTimeout(2);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void GoalAlign::Execute()
 {
+	Robot::driveBaseSubsystem->isAlignedX = false;
 	distanceToCenter = Robot::visionClass->getDistanceToCenter();
-
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
 	targetX = Robot::visionClass->getTargetX();
@@ -64,6 +65,7 @@ void GoalAlign::Execute()
 	if(inToleranceX) {
 		Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
 		printf("Target aligned in X dir!\n");
+		Robot::driveBaseSubsystem->isAlignedX = true;
 		isDone = true;
 	}
 }

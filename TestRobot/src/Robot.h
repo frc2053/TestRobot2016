@@ -8,6 +8,7 @@
 #include "Commands/DrivableDefenseAuto.h"
 #include "Subsystems/ShooterSubsystem.h"
 #include "Subsystems/IntakeSubsystem.h"
+#include "Subsystems/LEDSubsystem.h"
 
 #include "OI.h"
 #include "Subsystems/DriveBaseSubsystem.h"
@@ -19,6 +20,7 @@ public:
     static std::shared_ptr<DriveBaseSubsystem> driveBaseSubsystem;
     static std::shared_ptr<ShooterSubsystem> shooterSubsystem;
     static std::shared_ptr<IntakeSubsystem> intakeSubsystem;
+    static std::shared_ptr<LEDSubsystem> ledSubsystem;
     static std::shared_ptr<VisionClass> visionClass;
 
 	virtual void RobotInit();

@@ -14,10 +14,12 @@ std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonRight;
 std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServo;
 
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemintakeTalon;
-std::shared_ptr<Servo> RobotMap::intakeSubsystemintakeServo;
+std::shared_ptr<DoubleSolenoid> RobotMap::intakeSubsystemintakeSolenoid;
 
 std::shared_ptr<CANTalon> RobotMap::climberSubsystemclimbTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::climberSubsystemclimbTalonRight;
+std::shared_ptr<DoubleSolenoid> RobotMap::climberSubsystemclimbSolenoid;
+
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemGreenLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemRedLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemBlueLED;
@@ -37,8 +39,8 @@ void RobotMap::init() {
         driveBaseSubsystemrobotDrive->SetSensitivity(0.5);
         driveBaseSubsystemrobotDrive->SetMaxOutput(1.0);
 
-    driveBaseSubsystemrobotDrive->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
     driveBaseSubsystemrobotDrive->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+    driveBaseSubsystemrobotDrive->SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
 
     shooterSubsystemshooterTalonLeft.reset(new CANTalon(4));
     shooterSubsystemshooterTalonRight.reset(new CANTalon(3));
@@ -59,10 +61,11 @@ void RobotMap::init() {
     shooterSubsystemshooterServo.reset(new Servo(0));
 
     intakeSubsystemintakeTalon.reset(new CANTalon(4));
-    intakeSubsystemintakeServo.reset(new Servo(1));
+    intakeSubsystemintakeSolenoid.reset(new DoubleSolenoid(0,1));
 
     climberSubsystemclimbTalonLeft.reset(new CANTalon(5));
     climberSubsystemclimbTalonRight.reset(new CANTalon(7));
+    climberSubsystemclimbSolenoid.reset(new DoubleSolenoid(2,3));
 
     ledSubsystemGreenLED.reset(new DigitalOutput(0));
     ledSubsystemRedLED.reset(new DigitalOutput(1));

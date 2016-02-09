@@ -10,6 +10,7 @@ GoalAlignVertical::GoalAlignVertical(float distanceAway)
 	isDone = false;
 	calrot = 0;
 	adjyaw = 0;
+	Robot::driveBaseSubsystem->isAlignedY = false;
 }
 
 // Called just before this Command runs the first time
@@ -21,11 +22,13 @@ void GoalAlignVertical::Initialize()
 	isDone = false;
 	calrot = 0;
 	adjyaw = 0;
+	Robot::driveBaseSubsystem->isAlignedY = false;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void GoalAlignVertical::Execute()
 {
+	Robot::driveBaseSubsystem->isAlignedY = false;
 	distanceY = Robot::visionClass->getDistanceY();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
@@ -65,6 +68,7 @@ void GoalAlignVertical::Execute()
 	}
 
 	if(inToleranceY) {
+		Robot::driveBaseSubsystem->isAlignedY = true;
 		Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
 		printf("Target aligned in Y!\n");
 		isDone = true;

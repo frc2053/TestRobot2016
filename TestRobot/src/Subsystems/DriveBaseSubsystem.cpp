@@ -16,6 +16,8 @@ DriveBaseSubsystem::DriveBaseSubsystem() : Subsystem("DriveBaseSubsystem") {
 	IMU_Yaw = 0;
 	calculatedoffset = 0;
 	yawoffset = 0;
+	isAlignedX = false;
+	isAlignedY = false;
 }
 
 void DriveBaseSubsystem::InitDefaultCommand() {
@@ -74,4 +76,12 @@ bool DriveBaseSubsystem::getIsRotDoneOverride()
 
 float DriveBaseSubsystem::getDistance() {
 	return (rangeFinder->GetVoltage()) / .0098;
+}
+
+bool DriveBaseSubsystem::IsAlignedX() {
+	return isAlignedX;
+}
+
+bool DriveBaseSubsystem::IsAlignedY() {
+	return isAlignedY;
 }

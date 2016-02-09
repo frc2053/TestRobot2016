@@ -27,12 +27,16 @@ public:
 	void setIsRotDoneOverride(bool isDone);
 	void setTimesThroughLoop(int timeLoop);
 	bool getIsRotDoneOverride();
+	bool IsAlignedX();
+	bool IsAlignedY();
 	float calculatedoffset; //calculated for imu offset
 	float yawoffset; //param
 	float IMU_Yaw; //return value for imuoffset
 	AHRS* imuRobot;
 	TigerDrive* tigerDrive;
 	float getDistance();
+	bool isAlignedX;
+	bool isAlignedY;
 };
 
 #endif
