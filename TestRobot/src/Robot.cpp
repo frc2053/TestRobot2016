@@ -4,6 +4,7 @@
 #include "Commands/DoNothing.h"
 #include "Commands/LeftGoalAuto.h"
 #include "Commands/RightGoalAuto.h"
+#include "vision/testVision.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;
@@ -14,7 +15,8 @@ std::unique_ptr<OI> Robot::oi;
 Task* visionTask;
 
 void Vision() {
-	Robot::visionClass->visionTest();
+	//testVision();
+	//Robot::visionClass->visionTest();
 }
 
 

@@ -6,7 +6,7 @@ ShooterSubsystem::ShooterSubsystem() : Subsystem("ShooterSubsystem") {
 	printf("Shooter Subsystem!\n");
     shooterTalonLeft = RobotMap::shooterSubsystemshooterTalonLeft;
     shooterTalonRight = RobotMap::shooterSubsystemshooterTalonRight;
-    shooterServo = RobotMap::shooterSubsystemshooterServo;
+    shooterSolenoid = RobotMap::shooterSubsystemshooterSolenoid;
 }
 
 void ShooterSubsystem::InitDefaultCommand() {
@@ -28,12 +28,12 @@ void ShooterSubsystem::ShootRightMotor(float speed) {
 	shooterTalonRight->Set(speed);
 }
 
-void ShooterSubsystem::SetServo(float pwm) {
-	shooterServo->Set(pwm);
+void ShooterSubsystem::SetSolenoidForward() {
+	shooterSolenoid->Set(DoubleSolenoid::kForward);
 }
 
-void ShooterSubsystem::SetServoAngle(float angle) {
-	shooterServo->SetAngle(angle);
+void ShooterSubsystem::SetSolenoidReverse() {
+	shooterSolenoid->Set(DoubleSolenoid::kReverse);
 }
 
 double ShooterSubsystem::GetEncoderVelocityLeft() {

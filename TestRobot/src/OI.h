@@ -13,6 +13,8 @@ private:
 	std::shared_ptr<JoystickButton> button2Y;
 
 	std::shared_ptr<JoystickButton> button1LeftBumper;
+	std::shared_ptr<JoystickButton> button2A;
+	std::shared_ptr<JoystickButton> button2Back;
 public:
 	OI();
 	std::shared_ptr<Joystick> getdriverJoystick();

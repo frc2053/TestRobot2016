@@ -11,7 +11,7 @@ std::shared_ptr<AnalogInput> RobotMap::driveBaseSubsystemrangeFinder;
 
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonRight;
-std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServo;
+std::shared_ptr<DoubleSolenoid> RobotMap::shooterSubsystemshooterSolenoid;
 
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemintakeTalon;
 std::shared_ptr<DoubleSolenoid> RobotMap::intakeSubsystemintakeSolenoid;
@@ -58,10 +58,10 @@ void RobotMap::init() {
 	//shooterSubsystemshooterTalonRight->SetD(20);
     //feed forward 1.41
 
-    shooterSubsystemshooterServo.reset(new Servo(0));
+    shooterSubsystemshooterSolenoid.reset(new DoubleSolenoid(0,1));
 
-    intakeSubsystemintakeTalon.reset(new CANTalon(4));
-    intakeSubsystemintakeSolenoid.reset(new DoubleSolenoid(0,1));
+    intakeSubsystemintakeTalon.reset(new CANTalon(1));
+    intakeSubsystemintakeSolenoid.reset(new DoubleSolenoid(4,5));
 
     climberSubsystemclimbTalonLeft.reset(new CANTalon(5));
     climberSubsystemclimbTalonRight.reset(new CANTalon(7));

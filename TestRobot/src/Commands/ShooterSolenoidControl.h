@@ -1,24 +1,25 @@
-#ifndef RollerControl_H
-#define RollerControl_H
+#ifndef ShooterSolenoidControl_H
+#define ShooterSolenoidControl_H
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class RollerControl: public Command
+class ShooterSolenoidControl: public Command
 {
 public:
-	RollerControl(float speed = 0, float time = 0);
+	ShooterSolenoidControl(int _direction);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
+	int direction;
+	bool isDone;
 	std::shared_ptr<Timer> timer;
 	float timeCurrent;
 	float timeTarget;
-	float inputSpeed;
-	bool isDone;
+	const float pnuematicDelay = 0.1;
 };
 
 #endif

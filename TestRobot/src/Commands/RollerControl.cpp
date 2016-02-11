@@ -4,8 +4,6 @@ RollerControl::RollerControl(float speed, float target)
 {
 	Requires(Robot::intakeSubsystem.get());
 	timer.reset(new Timer());
-	timer->Reset();
-	timer->Start();
 	timeCurrent = 0;
 	timeTarget = target;
 	inputSpeed = speed;
@@ -15,7 +13,10 @@ RollerControl::RollerControl(float speed, float target)
 // Called just before this Command runs the first time
 void RollerControl::Initialize()
 {
-
+	timer->Reset();
+	timer->Start();
+	timeCurrent = 0;
+	isDone = false;
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -47,8 +48,7 @@ bool RollerControl::IsFinished()
 // Called once after isFinished returns true
 void RollerControl::End()
 {
-	timer.reset();
-	Robot::intakeSubsystem->Intake(0);
+	timer->Stop();
 }
 
 // Called when another command which requires one or more of the same
