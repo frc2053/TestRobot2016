@@ -8,6 +8,8 @@
 #ifndef SRC_VISION_TESTVISION_H_
 #define SRC_VISION_TESTVISION_H_
 
+#include "../Robot.h"
+
 void testVision();
 
 

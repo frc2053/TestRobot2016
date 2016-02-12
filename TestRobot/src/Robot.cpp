@@ -13,12 +13,15 @@ std::shared_ptr<LEDSubsystem> Robot::ledSubsystem;
 std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
 Task* visionTask;
+Task* visionTask2;
 
 void Vision() {
-	//testVision();
-	//Robot::visionClass->visionTest();
+    Robot::visionClass->visionTest();
 }
 
+void Vision2()  {
+	//testVision();
+}
 
 void Robot::RobotInit() {
 	RobotMap::init();
@@ -48,6 +51,7 @@ void Robot::RobotInit() {
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
 
 	visionClass.reset(new VisionClass());
+	//visionTask2 = new Task("Vision2",(FUNCPTR)Vision2, Task::kDefaultPriority + 2);
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
   }
 

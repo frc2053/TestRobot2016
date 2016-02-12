@@ -49,7 +49,10 @@ private:
 //	ignore these
 	 cv::VideoCapture videoCapture;
 	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, rgb, matResize, testingMat;
-	 Image* myImaqImage;
+		IMAQdxSession session;
+		Image *frame;
+		IMAQdxError imaqError;
+		int frameWidth, frameHeight;
 
 //	Constants for known variables
 //	the height to the top of the target in first stronghold is 97 inches
