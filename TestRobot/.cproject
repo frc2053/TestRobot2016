@@ -28,7 +28,7 @@
 								<option id="gnu.cpp.compiler.option.optimization.level.1204256582" name="Optimization Level" superClass="gnu.cpp.compiler.option.optimization.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.optimization.level.none" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.debugging.level.969129918" name="Debug Level" superClass="gnu.cpp.compiler.option.debugging.level" useByScannerDiscovery="false" value="gnu.cpp.compiler.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.option.include.paths.394786621" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;C:\2168Vision\_Includes\OpenCV\2.4.10&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\OpenCV-unknown-\include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${WPILIB}/cpp/current/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc}/TestRobot/src&quot;"/>
 								</option>
@@ -39,17 +39,18 @@
 							<tool id="cdt.managedbuild.tool.gnu.cross.cpp.linker.1895838080" name="Cross G++ Linker" superClass="cdt.managedbuild.tool.gnu.cross.cpp.linker">
 								<option id="gnu.cpp.link.option.libs.1363675797" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="wpi"/>
+									<listOptionValue builtIn="false" value="opencv_imgcodecs"/>
 									<listOptionValue builtIn="false" value="opencv_core"/>
 									<listOptionValue builtIn="false" value="opencv_imgproc"/>
+									<listOptionValue builtIn="false" value="opencv_videoio"/>
 									<listOptionValue builtIn="false" value="opencv_highgui"/>
 									<listOptionValue builtIn="false" value="pthread"/>
 								</option>
 								<option id="gnu.cpp.link.option.paths.1566479969" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;C:\OpenCV-unknown-\lib&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${WPILIB}/cpp/current/lib&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\2168Vision\_Libraries\softFP\lib_OpenCV&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;C:\2168Vision\_Libraries\softFP\lib_cpp&quot;"/>
 								</option>
-								<option id="gnu.cpp.link.option.flags.675338432" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-Wl,-rpath,/opt/GenICam_v2_3/bin/Linux_armv7-a,-rpath,/usr/local/frc/rpath-lib,-rpath,C:\2168Vision\_Includes\OpenCV\2.4.10,-rpath,C:\2168Vision\_Libraries\softFP\lib_OpenCV-Wl,-rpath,/opt/GenICam_v2_3/bin/Linux_armv7-a,-rpath,/usr/local/frc/rpath-lib,-rpath,C:\2168Vision\_Includes\OpenCV\2.4.10,-rpath,C:\2168Vision\_Libraries\softFP\lib_OpenCV,-rpath,-Wl,-rpath,/opt/GenICam_v2_3/bin/Linux_armv7-a,-rpath,/usr/local/frc/rpath-lib,-rpath,C:\2168Vision\_Includes\OpenCV\2.4.10,-rpath,C:\2168Vision\_Libraries\softFP\lib_cpp" valueType="string"/>
+								<option id="gnu.cpp.link.option.flags.675338432" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-Wl,-rpath,/opt/GenICam_v2_3/bin/Linux_armv7-a,-rpath,/usr/local/frc/rpath-lib,-rpath,C:\OpenCV-unknown-\include,-rpath,C:\OpenCV-unknown-\lib" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.132949138" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -147,10 +148,10 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
-		<configuration configurationName="Debug">
+		<configuration configurationName="Simulate">
 			<resource resourceType="PROJECT" workspacePath="/TestRobot"/>
 		</configuration>
-		<configuration configurationName="Simulate">
+		<configuration configurationName="Debug">
 			<resource resourceType="PROJECT" workspacePath="/TestRobot"/>
 		</configuration>
 	</storageModule>
