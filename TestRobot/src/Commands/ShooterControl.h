@@ -19,6 +19,8 @@ private:
 	float timeTarget;
 	float inputSpeed;
 	bool isDone;
+	float rightTrigger2;
+	float leftTrigger2;
 };
 
 #endif

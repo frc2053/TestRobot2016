@@ -8,6 +8,8 @@ ShooterControl::ShooterControl(float speed, float target)
 	timeTarget = target;
 	inputSpeed = speed;
 	isDone = false;
+	rightTrigger2 = 0;
+	leftTrigger2 = 0;
 }
 
 // Called just before this Command runs the first time
@@ -17,15 +19,28 @@ void ShooterControl::Initialize()
 	timer->Start();
 	timeCurrent = 0;
 	isDone = false;
+	rightTrigger2 = 0;
+	leftTrigger2 = 0;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterControl::Execute()
 {
+	rightTrigger2 = Robot::oi->getgunnerJoystick()->GetRawAxis(3);
+	std::cout << "rightTrigger: " << rightTrigger2 << std::endl;
+	leftTrigger2 = Robot::oi->getgunnerJoystick()->GetRawAxis(2);
 	std::cout << "Velocity: " << Robot::shooterSubsystem->GetEncoderVelocityRight() << std::endl;
 	timeCurrent = timer->Get();
 	if(timeTarget == 0) {
-		Robot::shooterSubsystem->Shoot(inputSpeed);
+		if(rightTrigger2 > 0.2) {
+			Robot::shooterSubsystem->Shoot(-9);
+		}
+		else if(leftTrigger2 > 0.2) {
+			Robot::shooterSubsystem->Shoot(3);
+		}
+		else {
+			Robot::shooterSubsystem->Shoot(0);
+		}
 		isDone = true;
 	}
 	else {

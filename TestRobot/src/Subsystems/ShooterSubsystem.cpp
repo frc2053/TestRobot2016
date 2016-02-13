@@ -10,7 +10,7 @@ ShooterSubsystem::ShooterSubsystem() : Subsystem("ShooterSubsystem") {
 }
 
 void ShooterSubsystem::InitDefaultCommand() {
-    //SetDefaultCommand(new ShooterControl());
+    SetDefaultCommand(new ShooterControl(0, 0));
 }
 
 void ShooterSubsystem::Shoot(float speed)
