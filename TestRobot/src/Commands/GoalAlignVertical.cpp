@@ -48,17 +48,17 @@ void GoalAlignVertical::Execute()
 
 	bool tooClose = distanceY <= (distanceTarget - toleranceY);
 	bool tooFar = distanceY >= (distanceTarget + toleranceY);
-	std::cout << "distanceY: " << distanceY << std::endl;
+	//std::cout << "distanceY: " << distanceY << std::endl;
 
-	std::cout << "tooClose: " << tooClose << std::endl;
-	std::cout << "tooFar: " << tooFar << std::endl;
+	//std::cout << "tooClose: " << tooClose << std::endl;
+	//std::cout << "tooFar: " << tooFar << std::endl;
 	if(tooClose) {
-		printf("bot is too close!\n");
+		//printf("bot is too close!\n");
 		inToleranceY = false;
 		Robot::driveBaseSubsystem->MecanumDrive(0, speedY, calrot, adjyaw);
 	}
 	else if(tooFar) {
-		printf("bot is too far!\n");
+		//printf("bot is too far!\n");
 		inToleranceY = false;
 		Robot::driveBaseSubsystem->MecanumDrive(0, -speedY, calrot, adjyaw);
 	}

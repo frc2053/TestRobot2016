@@ -14,7 +14,7 @@ std::unique_ptr<OI> Robot::oi;
 Task* visionTask;
 
 void Vision() {
-    //Robot::visionClass->visionTest();
+    Robot::visionClass->visionTest();
 }
 
 void Robot::RobotInit() {

@@ -37,16 +37,16 @@ VisionClass::VisionClass() {
  		contours.clear();
  		selected.clear();
  //			capture from the axis camera
- 		//printf("before read\n");
+ 		printf("before read\n");
  		videoCapture.read(matOriginal);
- 		//printf("after read\n");
+ 		printf("after read\n");
  //			captures from a static file for testing
- 		cv::imwrite("/home/lvuser/original.jpg", matOriginal);
+ 		//cv::imwrite("/home/lvuser/original.jpg", matOriginal);
  		cv::resize(matOriginal, matResize, resize);
  		cv::inRange(matResize, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
  		cv::findContours(matThresh, contours, matHeirarchy, cv::RETR_EXTERNAL,
  				cv::CHAIN_APPROX_SIMPLE);
- 		//std::cout << "Size of contours: " << contours.size() << std::endl;
+ 		std::cout << "Size of contours: " << contours.size() << std::endl;
  //			make sure the contours that are detected are at least 20x20
  //			pixels with an area of 400 and an aspect ration greater then 1
  		//printf("looping\n");
@@ -57,13 +57,13 @@ VisionClass::VisionClass() {
 				selected.push_back(contours[i]);
 				}
  		}
- 		//std::cout << "Size of selected: " << selected.size() << std::endl;
+ 		std::cout << "Size of selected: " << selected.size() << std::endl;
  		for(unsigned int i = 0; i < selected.size(); i++){
  			cv::Rect rec = cv::boundingRect(selected[i]);
  			//std::cout << "looping on selected!" << std::endl;
  			cv::rectangle(matResize, rec.br(), rec.tl(), BLACK);
  		}
- 		cv::imwrite("/home/lvuser/output.jpg", matResize);
+ 		//cv::imwrite("/home/lvuser/output.jpg", matResize);
  //			if there is only 1 target, then we have found the target we want
  		if(selected.size() == 1){
  			//std::cout << "selected is one!" << std::endl;
@@ -112,7 +112,7 @@ void VisionClass::visionTest() {
 	testingMat = cv::Mat();
 	myImaqImage = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
     videoCapture =  cv::VideoCapture();
-	videoCapture.open(0);
+	videoCapture.open("http://10.20.53.18/mjpg/video.mjpg");
 //	main loop of the program
 	while(!videoCapture.isOpened())
 	{

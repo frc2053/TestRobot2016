@@ -27,9 +27,9 @@ void ShooterControl::Initialize()
 void ShooterControl::Execute()
 {
 	rightTrigger2 = Robot::oi->getgunnerJoystick()->GetRawAxis(3);
-	std::cout << "rightTrigger: " << rightTrigger2 << std::endl;
+	//std::cout << "rightTrigger: " << rightTrigger2 << std::endl;
 	leftTrigger2 = Robot::oi->getgunnerJoystick()->GetRawAxis(2);
-	std::cout << "Velocity: " << Robot::shooterSubsystem->GetEncoderVelocityRight() << std::endl;
+	//std::cout << "Velocity: " << Robot::shooterSubsystem->GetEncoderVelocityRight() << std::endl;
 	timeCurrent = timer->Get();
 	if(timeTarget == 0) {
 		if(rightTrigger2 > 0.2) {

@@ -4,6 +4,8 @@
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "RobotMap.h"
+#include <unistd.h>
+#include <stdio.h>
 
 #include "Commands/DrivableDefenseAuto.h"
 #include "Subsystems/ShooterSubsystem.h"
