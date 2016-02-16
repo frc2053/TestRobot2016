@@ -112,7 +112,7 @@ void VisionClass::visionTest() {
 	testingMat = cv::Mat();
 	myImaqImage = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
     videoCapture =  cv::VideoCapture();
-	videoCapture.open("http://10.20.53.18/mjpg/video.mjpg");
+	videoCapture.open(0);
 //	main loop of the program
 	while(!videoCapture.isOpened())
 	{
