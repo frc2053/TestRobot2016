@@ -28,7 +28,7 @@ VisionClass::VisionClass() {
   */
  void VisionClass::processImage(){
 	 videoCapture.set(CV_CAP_PROP_EXPOSURE, 1);
-	//buttonPressed = Robot::oi->getDriveJoystick()->GetRawButton(5);
+	//buttonPressed = Robot::oi->getdriverJoystick()->GetRawButton(6);
 	printf("IM AM IN PROCESS IMAGE!\n");
  	double x,y,targetX,targetY,azimuth;
  	//int FrameCount = 0;
@@ -43,7 +43,11 @@ VisionClass::VisionClass() {
  //			captures from a static file for testing
  		//cv::imwrite("/home/lvuser/original.jpg", matOriginal);
  		cv::resize(matOriginal, matResize, resize);
- 		cv::inRange(matResize, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
+ 		cv::imwrite("/home/lvuser/resize.bmp", matResize);
+ 		cv::cvtColor(matResize, matHSV, cv::COLOR_HLS2RGB);
+ 		cv::imwrite("/home/lvuser/colorconvert.bmp", matHSV);
+ 		cv::inRange(matHSV, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
+ 		cv::imwrite("/home/lvuser/threshhold.bmp", matThresh);
  		cv::findContours(matThresh, contours, matHeirarchy, cv::RETR_EXTERNAL,
  				cv::CHAIN_APPROX_SIMPLE);
  		std::cout << "Size of contours: " << contours.size() << std::endl;
@@ -89,6 +93,7 @@ VisionClass::VisionClass() {
  			std::cout << "Distance: " << distance << std::endl;
  			visionMutex.unlock();
  		}
+ 		//cv::imwrite("/home/lvuser/output.jpg", matResize);
  		cvtColor(matResize, rgb, cv::COLOR_BGR2RGB, 0);
  		imaqArrayToImage(myImaqImage, rgb.data, rgb.cols, rgb.rows);
  		CameraServer::GetInstance()->SetImage(myImaqImage);

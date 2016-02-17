@@ -35,11 +35,8 @@ private:
 	BLACK = cv::Scalar(0,0,0),
 	YELLOW = cv::Scalar(0, 255, 255),
 //	these are the threshold values in order
-	LOWER_BOUNDS = cv::Scalar(25,177,0),
-	UPPER_BOUNDS = cv::Scalar(148,255,255);
-	//rgb bgr
-	//lower: 0,177,25 - 25,177,0
-	//upper: 148,255,255 - 255,255,148
+	LOWER_BOUNDS = cv::Scalar(225,225,225),
+	UPPER_BOUNDS = cv::Scalar(255,255,255);
 
 	double distance = 0;
 
