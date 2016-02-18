@@ -36,7 +36,7 @@ void ShooterControl::Execute()
 			Robot::shooterSubsystem->Shoot(-9);
 		}
 		else if(leftTrigger2 > 0.2) {
-			Robot::shooterSubsystem->Shoot(3);
+			Robot::shooterSubsystem->Shoot(6);
 		}
 		else {
 			Robot::shooterSubsystem->Shoot(0);
