@@ -44,13 +44,13 @@ void RobotMap::init() {
 
     shooterSubsystemshooterTalonLeft.reset(new CANTalon(4));
     shooterSubsystemshooterTalonRight.reset(new CANTalon(3));
-    shooterSubsystemshooterTalonLeft->SetControlMode(CANTalon::kSpeed);
-    //shooterSubsystemshooterTalonLeft->SetVoltageCompensationRampRate(24.0);
-    shooterSubsystemshooterTalonLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
-    shooterSubsystemshooterTalonLeft->ConfigEncoderCodesPerRev(1024);
-    shooterSubsystemshooterTalonLeft->SetP(300);
-    shooterSubsystemshooterTalonLeft->SetI(0);
-    shooterSubsystemshooterTalonLeft->SetD(20);
+    shooterSubsystemshooterTalonLeft->SetControlMode(CANTalon::kVoltage);
+    shooterSubsystemshooterTalonLeft->SetVoltageCompensationRampRate(24.0);
+    //shooterSubsystemshooterTalonLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
+    //shooterSubsystemshooterTalonLeft->ConfigEncoderCodesPerRev(1024);
+    //shooterSubsystemshooterTalonLeft->SetP(300);
+    //shooterSubsystemshooterTalonLeft->SetI(0);
+    //shooterSubsystemshooterTalonLeft->SetD(20);
 
 
     shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::kVoltage);

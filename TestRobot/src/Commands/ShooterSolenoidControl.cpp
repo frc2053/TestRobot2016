@@ -1,13 +1,11 @@
 #include "ShooterSolenoidControl.h"
 
-ShooterSolenoidControl::ShooterSolenoidControl(int _direction)
+ShooterSolenoidControl::ShooterSolenoidControl()
 {
-	direction = _direction;
+	std::cout << "shooterControl constructor!" << std::endl;
 	isDone = false;
 	Requires(Robot::shooterSubsystem.get());
 	timer.reset(new Timer());
-	timer->Reset();
-	timer->Start();
 	timeTarget = pnuematicDelay;
 	timeCurrent = 0;
 }
@@ -15,7 +13,10 @@ ShooterSolenoidControl::ShooterSolenoidControl(int _direction)
 // Called just before this Command runs the first time
 void ShooterSolenoidControl::Initialize()
 {
+	std::cout << "Init function!" << std::endl;
 	isDone = false;
+	timer->Reset();
+	timer->Start();
 	timeTarget = pnuematicDelay;
 	timeCurrent = 0;
 }
@@ -25,17 +26,15 @@ void ShooterSolenoidControl::Execute()
 {
 	isDone = false;
 	timeCurrent = timer->Get();
+	std::cout << "timeCurrent: " << timeCurrent << std::endl;
 	if(timeCurrent >= timeTarget) {
+		Robot::shooterSubsystem->SetSolenoidReverse();
+		printf("isDone!\n");
 		isDone = true;
 	}
 	else {
-		isDone = false;
-	}
-	if(direction == 1) {
 		Robot::shooterSubsystem->SetSolenoidForward();
-	}
-	if(direction == 0) {
-		Robot::shooterSubsystem->SetSolenoidReverse();
+		isDone = false;
 	}
 }
 
@@ -48,7 +47,7 @@ bool ShooterSolenoidControl::IsFinished()
 // Called once after isFinished returns true
 void ShooterSolenoidControl::End()
 {
-
+	timer->Stop();
 }
 
 // Called when another command which requires one or more of the same

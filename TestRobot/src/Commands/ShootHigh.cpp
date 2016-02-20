@@ -8,7 +8,6 @@ ShootHigh::ShootHigh()
 {
 	AddSequential(new ShooterControl(9, 1));
 	Wait(.5);
-	AddSequential(new ShooterSolenoidControl(1));
-	AddSequential(new ShooterSolenoidControl(0));
+	AddSequential(new ShooterSolenoidControl());
 	AddSequential(new ShooterControl(0, 0));
 }

@@ -18,8 +18,7 @@ OI::OI() {
 
     button1LeftBumper.reset(new JoystickButton(driverJoystick.get(), 5));
 
-    button2A->WhenPressed(new ShooterSolenoidControl(0));
-    button2A->WhenReleased(new ShooterSolenoidControl(1));
+    button2A->WhenPressed(new ShooterSolenoidControl());
 
     button2X->WhenPressed(new RollerControl(.8, 0));
     button2X->WhenReleased(new RollerControl(0, 0));

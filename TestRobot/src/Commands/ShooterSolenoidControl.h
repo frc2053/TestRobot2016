@@ -7,19 +7,18 @@
 class ShooterSolenoidControl: public Command
 {
 public:
-	ShooterSolenoidControl(int _direction);
+	ShooterSolenoidControl();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 private:
-	int direction;
 	bool isDone;
 	std::shared_ptr<Timer> timer;
 	float timeCurrent;
 	float timeTarget;
-	const float pnuematicDelay = 0.1;
+	const float pnuematicDelay = 1;
 };
 
 #endif
