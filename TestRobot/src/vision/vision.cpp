@@ -63,7 +63,7 @@ VisionClass::VisionClass() {
  			//std::cout << "looping on selected!" << std::endl;
  			cv::rectangle(matResize, rec.br(), rec.tl(), BLACK);
  		}
- 		//cv::imwrite("/home/lvuser/output.jpg", matResize);
+ 		//
  //			if there is only 1 target, then we have found the target we want
  		if(selected.size() == 1){
  			//std::cout << "selected is one!" << std::endl;
@@ -89,6 +89,7 @@ VisionClass::VisionClass() {
  			std::cout << "Distance: " << distance << std::endl;
  			visionMutex.unlock();
  		}
+ 		cv::imwrite("/home/lvuser/output.jpg", matResize);
  		cvtColor(matResize, rgb, cv::COLOR_BGR2RGB, 0);
  		imaqArrayToImage(myImaqImage, rgb.data, rgb.cols, rgb.rows);
  		CameraServer::GetInstance()->SetImage(myImaqImage);

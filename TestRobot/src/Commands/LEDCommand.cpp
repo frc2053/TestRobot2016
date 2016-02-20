@@ -20,8 +20,8 @@ void LEDCommand::Execute()
 		Robot::ledSubsystem->SetGreenLED(0);
 	}
 	else {
-		Robot::ledSubsystem->SetBlueLED(0);
 		Robot::ledSubsystem->SetRedLED(1);
+		Robot::ledSubsystem->SetBlueLED(0);
 		Robot::ledSubsystem->SetGreenLED(0);
 	}
 }

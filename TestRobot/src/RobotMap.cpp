@@ -69,7 +69,7 @@ void RobotMap::init() {
     climberSubsystemclimbTalonRight.reset(new CANTalon(7));
     climberSubsystemclimbSolenoid.reset(new DoubleSolenoid(2,3));
 
-    ledSubsystemGreenLED.reset(new DigitalOutput(0));
-    ledSubsystemRedLED.reset(new DigitalOutput(1));
-    ledSubsystemBlueLED.reset(new DigitalOutput(2));
+    ledSubsystemGreenLED.reset(new DigitalOutput(1));
+    ledSubsystemRedLED.reset(new DigitalOutput(2));
+    ledSubsystemBlueLED.reset(new DigitalOutput(3));
 }

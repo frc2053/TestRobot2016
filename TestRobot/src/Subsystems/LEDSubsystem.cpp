@@ -1,5 +1,6 @@
 #include "LEDSubsystem.h"
 #include "../RobotMap.h"
+#include "../Commands/LEDCommand.h"
 
 LEDSubsystem::LEDSubsystem() : Subsystem("LEDSubsystem")
 {
@@ -10,7 +11,7 @@ LEDSubsystem::LEDSubsystem() : Subsystem("LEDSubsystem")
 
 void LEDSubsystem::InitDefaultCommand()
 {
-	//SetDefaultCommand(new MySpecialCommand());
+	SetDefaultCommand(new LEDCommand());
 }
 
 void LEDSubsystem::SetRedLED(float value)
