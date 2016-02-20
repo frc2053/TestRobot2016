@@ -29,14 +29,15 @@ void ShooterControl::Execute()
 	rightTrigger2 = Robot::oi->getgunnerJoystick()->GetRawAxis(3);
 	//std::cout << "rightTrigger: " << rightTrigger2 << std::endl;
 	leftTrigger2 = Robot::oi->getgunnerJoystick()->GetRawAxis(2);
-	//std::cout << "Velocity: " << Robot::shooterSubsystem->GetEncoderVelocityRight() << std::endl;
+	std::cout << "VelocityRight: " << Robot::shooterSubsystem->GetEncoderVelocityRight() << std::endl;
+	std::cout << "VelocityLeft: " << Robot::shooterSubsystem->GetEncoderVelocityLeft() << std::endl;
 	timeCurrent = timer->Get();
 	if(timeTarget == 0) {
 		if(rightTrigger2 > 0.2) {
-			Robot::shooterSubsystem->Shoot(6.3);
+			Robot::shooterSubsystem->Shoot(3200);
 		}
 		else if(leftTrigger2 > 0.2) {
-			Robot::shooterSubsystem->Shoot(-3);
+			Robot::shooterSubsystem->Shoot(-1500);
 		}
 		else {
 			Robot::shooterSubsystem->Shoot(0);

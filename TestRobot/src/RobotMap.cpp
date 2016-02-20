@@ -44,25 +44,21 @@ void RobotMap::init() {
 
     shooterSubsystemshooterTalonLeft.reset(new CANTalon(4));
     shooterSubsystemshooterTalonRight.reset(new CANTalon(3));
-    shooterSubsystemshooterTalonLeft->SetControlMode(CANTalon::kVoltage);
-    shooterSubsystemshooterTalonLeft->SetVoltageCompensationRampRate(24.0);
-    //shooterSubsystemshooterTalonLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
-    //shooterSubsystemshooterTalonLeft->ConfigEncoderCodesPerRev(1024);
-    //shooterSubsystemshooterTalonLeft->SetP(300);
-    //shooterSubsystemshooterTalonLeft->SetI(0);
-    //shooterSubsystemshooterTalonLeft->SetD(20);
+    shooterSubsystemshooterTalonLeft->SetControlMode(CANTalon::kSpeed);
+    //shooterSubsystemshooterTalonLeft->SetVoltageCompensationRampRate(24.0);
+    shooterSubsystemshooterTalonLeft->SetFeedbackDevice(CANTalon::QuadEncoder);
+    shooterSubsystemshooterTalonLeft->SetP(0);
+    shooterSubsystemshooterTalonLeft->SetI(0);
+    shooterSubsystemshooterTalonLeft->SetD(0);
 
 
-    shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::kVoltage);
-    shooterSubsystemshooterTalonRight->SetVoltageCompensationRampRate(24.0);
-    //shooterSubsystemshooterTalonRight->SetFeedbackDevice(CANTalon::QuadEncoder);
-    //shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::ControlMode::kSpeed);
-    //shooterSubsystemshooterTalonRight->ConfigEncoderCodesPerRev(256);
-    //shooterSubsystemshooterTalonRight->Set(300);
-    //shooterSubsystemshooterTalonRight->SetP(2);
-	//shooterSubsystemshooterTalonRight->SetI(0);
-	//shooterSubsystemshooterTalonRight->SetD(20);
-    //feed forward 1.41
+    shooterSubsystemshooterTalonRight->SetControlMode(CANTalon::kSpeed);
+    //shooterSubsystemshooterTalonRight->SetVoltageCompensationRampRate(24.0);
+    shooterSubsystemshooterTalonRight->SetFeedbackDevice(CANTalon::QuadEncoder);
+    shooterSubsystemshooterTalonRight->SetP(0);
+	shooterSubsystemshooterTalonRight->SetI(0);
+	shooterSubsystemshooterTalonRight->SetD(0);
+    //feed forward 0.185
 
     shooterSubsystemshooterSolenoid.reset(new DoubleSolenoid(0,1));
 

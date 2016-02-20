@@ -37,9 +37,9 @@ void ShooterSubsystem::SetSolenoidReverse() {
 }
 
 double ShooterSubsystem::GetEncoderVelocityLeft() {
-	return (shooterTalonLeft->GetEncVel() * -1) / 2;
+	return (shooterTalonLeft->GetEncVel() * -1);
 }
 
 double ShooterSubsystem::GetEncoderVelocityRight() {
-	return (shooterTalonRight->GetEncVel() * -1) / 2;
+	return (shooterTalonRight->GetEncVel() * -1);
 }
