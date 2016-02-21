@@ -89,9 +89,9 @@ VisionClass::VisionClass() {
  			std::cout << "Distance: " << distance << std::endl;
  			visionMutex.unlock();
  		}
- 		cv::imwrite("/home/lvuser/output.jpg", matResize);
- 		cvtColor(matResize, rgb, cv::COLOR_BGR2RGB, 0);
- 		imaqArrayToImage(myImaqImage, rgb.data, rgb.cols, rgb.rows);
+ 		//cv::imwrite("/home/lvuser/output.jpg", matResize);
+ 		cvtColor(matResize, matGray, cv::COLOR_BGR2GRAY, 0);
+ 		imaqArrayToImage(myImaqImage, matGray.data, matGray.cols, matGray.rows);
  		CameraServer::GetInstance()->SetImage(myImaqImage);
  	}
 }
@@ -108,10 +108,10 @@ void VisionClass::visionTest() {
 	matThresh =  cv::Mat();
 	clusters =  cv::Mat();
 	matHeirarchy =  cv::Mat();
-	rgb = cv::Mat();
+	matGray = cv::Mat();
 	matResize = cv::Mat();
 	testingMat = cv::Mat();
-	myImaqImage = imaqCreateImage(IMAQ_IMAGE_RGB, 0);
+	myImaqImage = imaqCreateImage(ImageType::IMAQ_IMAGE_U8, 0);
     videoCapture =  cv::VideoCapture();
 	videoCapture.open(0);
 //	main loop of the program
@@ -121,7 +121,6 @@ void VisionClass::visionTest() {
 	}
 	processImage();
 	cv::imwrite("/home/lvuser/output.jpg", matOriginal);
-	cv::imwrite("/home/lvuser/outputrgb.jpg", rgb);
 //	make sure the java process quits when the loop finishes
 	videoCapture.release();
 	exit(0);

@@ -51,7 +51,7 @@ private:
 
 //	ignore these
 	 cv::VideoCapture videoCapture;
-	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, rgb, matResize, testingMat;
+	 cv::Mat matOriginal, matHSV, matThresh, clusters, matHeirarchy, matGray, matResize, testingMat;
 	 Image* myImaqImage;
 
 //	Constants for known variables
