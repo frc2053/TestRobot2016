@@ -20,10 +20,10 @@ OI::OI() {
 
     button2A->WhenPressed(new ShooterSolenoidControl());
 
-    button2X->WhenPressed(new RollerControl(.8, 0));
+    button2X->WhenPressed(new RollerControl(.4, 0));
     button2X->WhenReleased(new RollerControl(0, 0));
 
-    button2Y->WhenPressed(new RollerControl(-.8, 0));
+    button2Y->WhenPressed(new RollerControl(-.4, 0));
     button2Y->WhenReleased(new RollerControl(0, 0));
 
 
