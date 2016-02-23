@@ -11,10 +11,11 @@ std::shared_ptr<IntakeSubsystem> Robot::intakeSubsystem;
 std::shared_ptr<LEDSubsystem> Robot::ledSubsystem;
 std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
+PowerDistributionPanel* pdp;
 Task* visionTask;
 
 void Vision() {
-    //Robot::visionClass->visionTest();
+    Robot::visionClass->visionTest();
 }
 
 void Robot::RobotInit() {
@@ -46,6 +47,7 @@ void Robot::RobotInit() {
 
 	visionClass.reset(new VisionClass());
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
+	pdp = new PowerDistributionPanel();
   }
 
 void Robot::DisabledInit(){
@@ -80,6 +82,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	SmartDashboard::PutNumber("Intake Amperage", pdp->GetCurrent(10));
 }
 
 void Robot::TestPeriodic() {
