@@ -23,6 +23,9 @@ private:
 	float adjyaw = 0;
 	int distanceToCenter = 0;
 	float speedX = 0;
+	float LeftJoystickX;
+	float LeftJoystickY;
+	float RightJoystickX;
 };
 
 #endif

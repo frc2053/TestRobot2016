@@ -28,6 +28,21 @@ void GoalAlignVertical::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void GoalAlignVertical::Execute()
 {
+	LeftJoystickX = Robot::oi->getdriverJoystick()->GetRawAxis(0);
+	LeftJoystickY = Robot::oi->getdriverJoystick()->GetRawAxis(1);
+	RightJoystickX = Robot::oi->getdriverJoystick()->GetRawAxis(4);
+	if(LeftJoystickX < .2) {
+		LeftJoystickX = 0;
+	}
+	if(LeftJoystickY < .2) {
+		LeftJoystickY = 0;
+	}
+	if(RightJoystickX < .2) {
+		RightJoystickX = 0;
+	}
+	if(LeftJoystickX != 0 || LeftJoystickY != 0 || RightJoystickX != 0) {
+		isDone = true;
+	}
 	Robot::driveBaseSubsystem->isAlignedY = false;
 	distanceY = Robot::visionClass->getDistanceY();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();

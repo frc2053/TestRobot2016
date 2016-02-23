@@ -22,6 +22,9 @@ private:
 	const int toleranceY = 6; //inches
 	int distanceTarget = 0;
 	bool inToleranceY;
+	float LeftJoystickX;
+	float LeftJoystickY;
+	float RightJoystickX;
 };
 
 #endif
