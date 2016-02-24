@@ -29,10 +29,10 @@ OI::OI() {
     button2Y->WhenPressed(new RollerControl(-.4, 0));
     button2Y->WhenReleased(new RollerControl(0, 0));
 
-    button2Start->WhenPressed(new ClimbCommand(.3, 0));
+    button2Start->WhenPressed(new ClimbCommand(1, 0));
     button2Start->WhenReleased(new ClimbCommand(0, 0));
 
-    button2Select->WhenPressed(new ClimbCommand(-.3, 0));
+    button2Select->WhenPressed(new ClimbCommand(-1, 0));
     button2Select->WhenReleased(new ClimbCommand(0, 0));
 
     button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal());
