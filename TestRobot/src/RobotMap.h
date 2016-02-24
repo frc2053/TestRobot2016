@@ -20,7 +20,6 @@ public:
 	static std::shared_ptr<CANTalon> driveBaseSubsystembackLeftTalon;
 	static std::shared_ptr<CANTalon> driveBaseSubsystembackRightTalon;
 	static std::shared_ptr<RobotDrive> driveBaseSubsystemrobotDrive;
-	static std::shared_ptr<AnalogInput> driveBaseSubsystemrangeFinder;
 
 	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonLeft;
 	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonRight;

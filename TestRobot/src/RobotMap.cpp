@@ -7,7 +7,6 @@ std::shared_ptr<CANTalon> RobotMap::driveBaseSubsystemfrontRightTalon;
 std::shared_ptr<CANTalon> RobotMap::driveBaseSubsystembackLeftTalon;
 std::shared_ptr<CANTalon> RobotMap::driveBaseSubsystembackRightTalon;
 std::shared_ptr<RobotDrive> RobotMap::driveBaseSubsystemrobotDrive;
-std::shared_ptr<AnalogInput> RobotMap::driveBaseSubsystemrangeFinder;
 
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonRight;
@@ -29,7 +28,6 @@ void RobotMap::init() {
     driveBaseSubsystemfrontRightTalon.reset(new CANTalon(6));
     driveBaseSubsystembackLeftTalon.reset(new CANTalon(9));
     driveBaseSubsystembackRightTalon.reset(new CANTalon(2));
-    driveBaseSubsystemrangeFinder.reset(new AnalogInput(0));
     
     driveBaseSubsystemrobotDrive.reset(new RobotDrive(driveBaseSubsystemfrontLeftTalon, driveBaseSubsystembackLeftTalon,
               driveBaseSubsystemfrontRightTalon, driveBaseSubsystembackRightTalon));

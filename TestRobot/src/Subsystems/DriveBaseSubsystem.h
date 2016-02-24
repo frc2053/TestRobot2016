@@ -12,7 +12,6 @@ private:
 	std::shared_ptr<CANTalon> backLeftTalon;
 	std::shared_ptr<CANTalon> backRightTalon;
 	std::shared_ptr<RobotDrive> robotDrive;
-	std::shared_ptr<AnalogInput> rangeFinder;
 public:
 	DriveBaseSubsystem();
 	void InitDefaultCommand();
@@ -34,7 +33,6 @@ public:
 	float IMU_Yaw; //return value for imuoffset
 	AHRS* imuRobot;
 	TigerDrive* tigerDrive;
-	float getDistance();
 	bool isAlignedX;
 	bool isAlignedY;
 };
