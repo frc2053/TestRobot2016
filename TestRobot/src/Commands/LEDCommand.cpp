@@ -14,7 +14,7 @@ void LEDCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LEDCommand::Execute()
 {
-	if(Robot::driveBaseSubsystem->isAlignedX && Robot::driveBaseSubsystem->isAlignedY) {
+	/*if(Robot::driveBaseSubsystem->isAlignedX && Robot::driveBaseSubsystem->isAlignedY) {
 		Robot::ledSubsystem->SetBlueLED(1);
 		Robot::ledSubsystem->SetRedLED(0);
 		Robot::ledSubsystem->SetGreenLED(0);
@@ -23,7 +23,9 @@ void LEDCommand::Execute()
 		Robot::ledSubsystem->SetRedLED(1);
 		Robot::ledSubsystem->SetBlueLED(0);
 		Robot::ledSubsystem->SetGreenLED(0);
-	}
+	}*/
+	Robot::ledSubsystem->SetRedLED(1);
+	Robot::ledSubsystem->SetBlueLED(1);
 }
 
 // Make this return true when this Command no longer needs to run execute()
