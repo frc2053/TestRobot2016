@@ -26,6 +26,7 @@ void LEDCommand::Execute()
 	}*/
 	Robot::ledSubsystem->SetRedLED(1);
 	Robot::ledSubsystem->SetBlueLED(1);
+	Robot::ledSubsystem->SetGreenLED(0);
 }
 
 // Make this return true when this Command no longer needs to run execute()

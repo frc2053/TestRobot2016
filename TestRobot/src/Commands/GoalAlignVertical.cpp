@@ -11,6 +11,9 @@ GoalAlignVertical::GoalAlignVertical(float distanceAway)
 	calrot = 0;
 	adjyaw = 0;
 	Robot::driveBaseSubsystem->isAlignedY = false;
+	LeftJoystickX = 0;
+	LeftJoystickY = 0;
+	RightJoystickX = 0;
 }
 
 // Called just before this Command runs the first time

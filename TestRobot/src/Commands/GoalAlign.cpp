@@ -12,6 +12,9 @@ GoalAlign::GoalAlign()
 	speedX = 0;
 	Robot::driveBaseSubsystem->isAlignedX = false;
 	SetTimeout(4);
+	LeftJoystickX = 0;
+	LeftJoystickY = 0;
+	RightJoystickX = 0;
 }
 
 // Called just before this Command runs the first time
