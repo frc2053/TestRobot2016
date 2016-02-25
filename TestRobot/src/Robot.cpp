@@ -4,13 +4,16 @@
 #include "Commands/DoNothing.h"
 #include "Commands/LeftGoalAuto.h"
 #include "Commands/RightGoalAuto.h"
+#include "Commands/TestAuto.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;
 std::shared_ptr<IntakeSubsystem> Robot::intakeSubsystem;
+std::shared_ptr<ClimberSubsystem> Robot::climberSubsystem;
 std::shared_ptr<LEDSubsystem> Robot::ledSubsystem;
 std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
+PowerDistributionPanel* pdp;
 Task* visionTask;
 
 void Vision() {
@@ -23,6 +26,7 @@ void Robot::RobotInit() {
     driveBaseSubsystem.reset(new DriveBaseSubsystem());
     shooterSubsystem.reset(new ShooterSubsystem());
     intakeSubsystem.reset(new IntakeSubsystem());
+    climberSubsystem.reset(new ClimberSubsystem());
     ledSubsystem.reset(new LEDSubsystem());
 
 	oi.reset(new OI());
@@ -34,6 +38,7 @@ void Robot::RobotInit() {
 	chooserGoal->AddObject("Right Goal", new RightGoalAuto());
 	chooserGoal->AddObject("Left Goal", new LeftGoalAuto());
 	chooserGoal->AddObject("Do Nothing", new DoNothing());
+	chooserGoal->AddObject("TestAuto", new TestAuto());
 
 	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
 	//chooserObstacle->AddObject("Portcullis", new PortcullisControl());
@@ -46,6 +51,7 @@ void Robot::RobotInit() {
 
 	visionClass.reset(new VisionClass());
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
+	pdp = new PowerDistributionPanel();
   }
 
 void Robot::DisabledInit(){
@@ -80,6 +86,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	SmartDashboard::PutNumber("Intake Amperage", pdp->GetCurrent(10));
 }
 
 void Robot::TestPeriodic() {

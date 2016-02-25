@@ -30,7 +30,6 @@ void DriveCommand::Initialize() {
 void DriveCommand::Execute() {
 	//printf("DriveCommand Execute!\n");
 	SmartDashboard::PutNumber("imuYaw", Robot::driveBaseSubsystem->getAdjYaw());
-	SmartDashboard::PutNumber("distance", Robot::driveBaseSubsystem->getDistance());
 	isRotDone = Robot::driveBaseSubsystem->getIsRotDone();
 	//printf("isRotDone%d\n", isRotDone);
 	//Gets joystick values
