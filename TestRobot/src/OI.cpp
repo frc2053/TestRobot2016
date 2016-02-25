@@ -5,6 +5,7 @@
 #include "Commands/ShooterControl.h"
 #include "Commands/RollerControl.h"
 #include "Commands/AlignVerticalAndHorizontal.h"
+#include "Commands/GoalAlign.h"
 #include "Commands/ZeroYaw.h"
 #include "Commands/ShooterSolenoidControl.h"
 
@@ -27,7 +28,7 @@ OI::OI() {
     button2Y->WhenReleased(new RollerControl(0, 0));
 
 
-    button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal());
+    button1LeftBumper->WhenPressed(new GoalAlign());
 
     SmartDashboard::PutData("ZeroYaw", new ZeroYaw());
 }
