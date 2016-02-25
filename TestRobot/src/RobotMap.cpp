@@ -23,6 +23,7 @@ std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemGreenLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemRedLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemBlueLED;
 
+std::shared_ptr<CANTalon> RobotMap::defenseSubsystemTalon;
 void RobotMap::init() {
     driveBaseSubsystemfrontLeftTalon.reset(new CANTalon(8));
     driveBaseSubsystemfrontRightTalon.reset(new CANTalon(6));
@@ -71,4 +72,6 @@ void RobotMap::init() {
     ledSubsystemGreenLED.reset(new DigitalOutput(1));
     ledSubsystemRedLED.reset(new DigitalOutput(2));
     ledSubsystemBlueLED.reset(new DigitalOutput(3));
+
+    defenseSubsystemTalon.reset(new CANTalon(10));
 }

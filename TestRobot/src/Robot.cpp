@@ -4,6 +4,7 @@
 #include "Commands/DoNothing.h"
 #include "Commands/LeftGoalAuto.h"
 #include "Commands/RightGoalAuto.h"
+#include "Commands/TestAuto.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;
@@ -37,6 +38,7 @@ void Robot::RobotInit() {
 	chooserGoal->AddObject("Right Goal", new RightGoalAuto());
 	chooserGoal->AddObject("Left Goal", new LeftGoalAuto());
 	chooserGoal->AddObject("Do Nothing", new DoNothing());
+	chooserGoal->AddObject("TestAuto", new TestAuto());
 
 	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
 	//chooserObstacle->AddObject("Portcullis", new PortcullisControl());

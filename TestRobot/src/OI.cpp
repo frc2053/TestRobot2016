@@ -1,6 +1,7 @@
 #include "OI.h"
 
 #include "SmartDashboard/SmartDashboard.h"
+#include "Commands/ShootHigh.h"
 #include "Commands/DriveCommand.h"
 #include "Commands/ShooterControl.h"
 #include "Commands/RollerControl.h"
@@ -14,6 +15,7 @@ OI::OI() {
     gunnerJoystick.reset(new Joystick(1));
     
     button2X.reset(new JoystickButton(gunnerJoystick.get(), 3));
+    button2B.reset(new JoystickButton(gunnerJoystick.get(), 2));
     button2A.reset(new JoystickButton(gunnerJoystick.get(), 1));
     button2Y.reset(new JoystickButton(gunnerJoystick.get(), 4));
     button2Start.reset(new JoystickButton(gunnerJoystick.get(), 8));
@@ -23,11 +25,13 @@ OI::OI() {
 
     button2A->WhenPressed(new ShooterSolenoidControl());
 
-    button2X->WhenPressed(new RollerControl(.4, 0));
+    button2X->WhenPressed(new RollerControl(1, 0));
     button2X->WhenReleased(new RollerControl(0, 0));
 
-    button2Y->WhenPressed(new RollerControl(-.4, 0));
+    button2Y->WhenPressed(new RollerControl(-1, 0));
     button2Y->WhenReleased(new RollerControl(0, 0));
+
+    button2B->WhenPressed(new ShootHigh());
 
     button2Start->WhenPressed(new ClimbCommand(1, 0));
     button2Start->WhenReleased(new ClimbCommand(0, 0));
