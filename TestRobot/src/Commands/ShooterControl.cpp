@@ -34,9 +34,11 @@ void ShooterControl::Execute()
 	timeCurrent = timer->Get();
 	if(timeTarget == 0) {
 		if(rightTrigger2 > 0.2) {
+			//Robot::shooterSubsystem->Shoot(12);
 			Robot::shooterSubsystem->Shoot(3200);
 		}
 		else if(leftTrigger2 > 0.2) {
+			//Robot::shooterSubsystem->Shoot(12);
 			Robot::shooterSubsystem->Shoot(-1500);
 		}
 		else {
