@@ -42,5 +42,6 @@ private:
 	Command* goalCommand;
 	Command* selectedObstacle;
 	Command* selectedGoal;
+	bool started;
 };
 #endif

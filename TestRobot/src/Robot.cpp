@@ -37,7 +37,7 @@ void Robot::RobotInit() {
 	chooserGoal->AddDefault("Center Goal", new CenterGoalAuto());
 	chooserGoal->AddObject("Right Goal", new RightGoalAuto());
 	chooserGoal->AddObject("Left Goal", new LeftGoalAuto());
-	chooserGoal->AddObject("Do Nothing", new DoNothing());
+	chooserGoal->AddObject("Do Nothing", new DoNothing(15));
 	chooserGoal->AddObject("TestAuto", new TestAuto());
 
 	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
@@ -45,7 +45,7 @@ void Robot::RobotInit() {
 	//chooserObstacle->AddObject("Cheval De Frise", new ChevalControl());
 	//chooserObstacle->AddObject("Drawbridge", new DrawbridgeControl());
 	//chooserObstacle->AddObject("Sally Door", new SallyDoorControl());
-	chooserObstacle->AddObject("Do nothing", new DoNothing());
+	chooserObstacle->AddObject("Do nothing", new DoNothing(15));
 	SmartDashboard::PutData("Goal Chooser", chooserGoal);
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
 
@@ -63,6 +63,7 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	started = false;
 	selectedObstacle = (Command*) chooserObstacle->GetSelected();
 	selectedGoal = (Command*) chooserGoal->GetSelected();
 	selectedObstacle->Start();
@@ -70,8 +71,9 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-	if(selectedObstacle->IsRunning() == false) {
+	if(selectedObstacle->IsRunning() == false && started == false) {
 		selectedGoal->Start();
+		started = true;
 	}
 }
 

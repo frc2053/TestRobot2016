@@ -41,7 +41,7 @@ VisionClass::VisionClass() {
  		videoCapture.read(matOriginal);
  		printf("after read\n");
  //			captures from a static file for testing
- 		//cv::imwrite("/home/lvuser/original.jpg", matOriginal);
+ 		cv::imwrite("/home/lvuser/original.jpg", matOriginal);
  		cv::resize(matOriginal, matResize, resize);
  		cv::inRange(matResize, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
  		cv::findContours(matThresh, contours, matHeirarchy, cv::RETR_EXTERNAL,
