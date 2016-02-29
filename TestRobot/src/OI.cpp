@@ -26,12 +26,6 @@ OI::OI() {
 
     button2A->WhenPressed(new ShooterSolenoidControl());
 
-    button2X->WhenPressed(new RollerControl(1, 0));
-    button2X->WhenReleased(new RollerControl(0, 0));
-
-    button2Y->WhenPressed(new RollerControl(-1, 0));
-    button2Y->WhenReleased(new RollerControl(0, 0));
-
     button2B->WhenPressed(new ShootHigh());
 
     button2Start->WhenPressed(new ClimbCommand(1, 0));
