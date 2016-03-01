@@ -35,7 +35,7 @@ void ShooterControl::Execute()
 	if(timeTarget == 0) {
 		if(rightTrigger2 > 0.2) {
 			//Robot::shooterSubsystem->Shoot(12);
-			Robot::shooterSubsystem->Shoot(3200);
+			Robot::shooterSubsystem->Shoot(6000);
 			Robot::intakeSubsystem->Intake(-1);
 		}
 		else if(leftTrigger2 > 0.2) {
