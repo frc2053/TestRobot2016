@@ -18,6 +18,8 @@ public:
 	void ClimbMotorLeft(float speed);
 	void SetSolenoidForward();
 	void SetSolenoidReverse();
+	bool GetForwardLimit();
+	bool GetReverseLimit();
 };
 
 #endif

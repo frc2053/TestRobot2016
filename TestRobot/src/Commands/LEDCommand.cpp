@@ -14,15 +14,25 @@ void LEDCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LEDCommand::Execute()
 {
-	if(Robot::driveBaseSubsystem->isAlignedX && Robot::driveBaseSubsystem->isAlignedY) {
-		Robot::ledSubsystem->SetBlueLED(1);
+	if(Robot::climberSubsystem->GetForwardLimit()) {
+		Robot::ledSubsystem->SetRedLED(1);
+		Robot::ledSubsystem->SetGreenLED(0.05);
+		Robot::ledSubsystem->SetBlueLED(0);
+		Wait(0.25);
 		Robot::ledSubsystem->SetRedLED(0);
 		Robot::ledSubsystem->SetGreenLED(0);
+		Robot::ledSubsystem->SetBlueLED(0);
 	}
 	else {
-		Robot::ledSubsystem->SetRedLED(1);
-		Robot::ledSubsystem->SetBlueLED(0);
-		Robot::ledSubsystem->SetGreenLED(0);
+		if(Robot::driveBaseSubsystem->isAlignedX && Robot::driveBaseSubsystem->isAlignedY) {
+			Robot::ledSubsystem->SetRedLED(0);
+			Robot::ledSubsystem->SetGreenLED(0);
+		}
+		else {
+			Robot::ledSubsystem->SetRedLED(1);
+			Robot::ledSubsystem->SetBlueLED(0);
+			Robot::ledSubsystem->SetGreenLED(0);
+		}
 	}
 }
 

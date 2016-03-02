@@ -4,7 +4,8 @@
 
 ClimberGoup::ClimberGoup()
 {
-	AddSequential(new ClimberSolenoidControl(true));
-	AddSequential(new ClimberSolenoidControl(false));
-	AddSequential(new ClimbCommand(1, 2));
+	AddParallel(new ClimberSolenoidControl(true));
+	AddSequential(new ClimbCommand(1, 3));
+	AddParallel(new ClimberSolenoidControl(false));
+	AddSequential(new ClimbCommand(-1, 3));
 }
