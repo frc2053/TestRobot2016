@@ -10,7 +10,7 @@ GoalAlign::GoalAlign()
 	adjyaw = 0;
 	distanceToCenter = 0;
 	speedX = 0;
-	SetTimeout(2);
+	//SetTimeout(2);
 	Robot::driveBaseSubsystem->isAlignedX = false;
 }
 
@@ -40,7 +40,7 @@ void GoalAlign::Execute()
 
 	if(distanceToCenter <= 160)
 	{
-		speedX = 0.4;
+		speedX = 0.3;
 	}
 	if(distanceToCenter <= 80)
 	{
@@ -48,7 +48,7 @@ void GoalAlign::Execute()
 	}
 	if(distanceToCenter <= 40)
 	{
-		speedX = 0.2;
+		speedX = 0.3;
 	}
 
 	if(targetX >= (centerX + toleranceX)) {

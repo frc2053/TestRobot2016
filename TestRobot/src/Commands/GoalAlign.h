@@ -17,7 +17,7 @@ private:
 	bool isDone;
 	int targetX;
 	bool inToleranceX;
-	const int toleranceX = 5;
+	const int toleranceX = 3;
 	const int centerX = 160; //pixels
 	float calrot = 0;
 	float adjyaw = 0;
