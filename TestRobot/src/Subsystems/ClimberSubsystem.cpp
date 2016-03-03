@@ -36,3 +36,11 @@ void ClimberSubsystem::SetSolenoidForward() {
 void ClimberSubsystem::SetSolenoidReverse() {
 	climbSolenoid->Set(DoubleSolenoid::kReverse);
 }
+
+bool ClimberSubsystem::GetForwardLimit() {
+	return climbTalonLeft->IsFwdLimitSwitchClosed();
+}
+
+bool ClimberSubsystem::GetReverseLimit() {
+	return climbTalonLeft->IsRevLimitSwitchClosed();
+}
