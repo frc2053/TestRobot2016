@@ -4,6 +4,6 @@
 
 AlignVerticalAndHorizontal::AlignVerticalAndHorizontal()
 {
-	AddSequential(new GoalAlignVertical(120));
+	AddSequential(new GoalAlignVertical(96));
 	AddSequential(new GoalAlign());
 }
