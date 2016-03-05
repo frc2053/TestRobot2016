@@ -77,15 +77,15 @@ float TigerDrive::CalculateRotValue(float angle, float speed)
 		}
 		if(degreesToAngleAbs <= 90)
 		{
-			speedWhileRotating = 0.4;
+			speedWhileRotating = 0.6;
 		}
 		if(degreesToAngleAbs <= 60)
 		{
-			speedWhileRotating = 0.3;
+			speedWhileRotating = 0.5;
 		}
 		if(degreesToAngleAbs <= 30)
 		{
-			speedWhileRotating = 0.2;
+			speedWhileRotating = 0.4;
 		}
 		calculatedRotate = spinDirection * speedWhileRotating;
 		calculatedRotate = calculatedRotate * speedScaleFactor;

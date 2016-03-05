@@ -35,8 +35,8 @@ private:
 	BLACK = cv::Scalar(0,0,0),
 	YELLOW = cv::Scalar(0, 255, 255),
 //	these are the threshold values in order
-	LOWER_BOUNDS = cv::Scalar(227,241,40),
-	UPPER_BOUNDS = cv::Scalar(255,255,255);
+	LOWER_BOUNDS = cv::Scalar(0,241,0),
+	UPPER_BOUNDS = cv::Scalar(172,255,147);
 	//rgb bgr
 	//lower: 218,241,227 - 227,241,218
 	//upper: 255,255,255 - 255,255,255

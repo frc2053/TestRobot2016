@@ -52,6 +52,7 @@ void Robot::RobotInit() {
 	visionClass.reset(new VisionClass());
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
 	pdp = new PowerDistributionPanel();
+	Robot::driveBaseSubsystem->imuRobot->ZeroYaw();
   }
 
 void Robot::DisabledInit(){

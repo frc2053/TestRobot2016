@@ -47,8 +47,8 @@ void GoalAlignVertical::Execute()
 		speedY = .25;
 	}
 
-	bool tooClose = distanceY <= (distanceTarget - toleranceY);
-	bool tooFar = distanceY >= (distanceTarget + toleranceY);
+	bool tooClose = distanceY < (distanceTarget - toleranceY);
+	bool tooFar = distanceY > (distanceTarget + toleranceY);
 	//std::cout << "distanceY: " << distanceY << std::endl;
 
 	std::cout << "tooClose: " << tooClose << std::endl;
