@@ -28,12 +28,12 @@ void FlipIntake::Execute()
 	timeCurrent = timer->Get();
 	std::cout << "timeCurrent: " << timeCurrent << std::endl;
 	if(timeCurrent >= timeTarget) {
-		Robot::shooterSubsystem->SetSolenoidReverse();
+		Robot::intakeSubsystem->SetIntakeSolenoidReverse();
 		printf("isDone!\n");
 		isDone = true;
 	}
 	else {
-		Robot::shooterSubsystem->SetSolenoidForward();
+		Robot::intakeSubsystem->SetIntakeSolenoidForward();
 		isDone = false;
 	}
 }
