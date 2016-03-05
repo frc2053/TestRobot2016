@@ -14,7 +14,7 @@ void LEDCommand::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void LEDCommand::Execute()
 {
-	if(Robot::climberSubsystem->GetForwardLimit()) {
+	if(false/*Robot::climberSubsystem->GetForwardLimit()*/) {
 		Robot::ledSubsystem->SetRedLED(1);
 		Robot::ledSubsystem->SetGreenLED(0.05);
 		Robot::ledSubsystem->SetBlueLED(0);

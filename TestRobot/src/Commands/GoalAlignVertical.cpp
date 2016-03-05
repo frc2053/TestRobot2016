@@ -34,24 +34,25 @@ void GoalAlignVertical::Execute()
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
 
 	if(distanceY >= 144) {
-		speedY = 1.0;
+		speedY = .25;
 	}
 	if(distanceY >= 120) {
-		speedY = .8;
+		speedY = .25;
+
 	}
 	if(distanceY >= 96) {
-		speedY = .6;
+		speedY = .25;
 	}
 	if(distanceY >= 60) {
-		speedY = .2;
+		speedY = .25;
 	}
 
 	bool tooClose = distanceY <= (distanceTarget - toleranceY);
 	bool tooFar = distanceY >= (distanceTarget + toleranceY);
 	//std::cout << "distanceY: " << distanceY << std::endl;
 
-	//std::cout << "tooClose: " << tooClose << std::endl;
-	//std::cout << "tooFar: " << tooFar << std::endl;
+	std::cout << "tooClose: " << tooClose << std::endl;
+	std::cout << "tooFar: " << tooFar << std::endl;
 	if(tooClose) {
 		//printf("bot is too close!\n");
 		inToleranceY = false;

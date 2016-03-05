@@ -88,7 +88,10 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
-	SmartDashboard::PutNumber("Intake Amperage", pdp->GetCurrent(10));
+	//SmartDashboard::PutNumber("Front Left Amperage", pdp->GetCurrent(3));
+	//SmartDashboard::PutNumber("Front Right Amperage", pdp->GetCurrent(14));
+	//SmartDashboard::PutNumber("Back Left Amperage", pdp->GetCurrent(0));
+	//SmartDashboard::PutNumber("Back Right Amperage", pdp->GetCurrent(15));
 }
 
 void Robot::TestPeriodic() {
