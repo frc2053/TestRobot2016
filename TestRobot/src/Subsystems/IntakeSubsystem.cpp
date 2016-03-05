@@ -17,10 +17,10 @@ void IntakeSubsystem::Intake(float speed)
 	intakeTalon->Set(speed);
 }
 
-void IntakeSubsystem::SetSolenoidForward() {
+void IntakeSubsystem::SetIntakeSolenoidForward() {
 	intakeSolenoid->Set(DoubleSolenoid::kForward);
 }
 
-void IntakeSubsystem::SetSolenoidReverse() {
+void IntakeSubsystem::SetIntakeSolenoidReverse() {
 	intakeSolenoid->Set(DoubleSolenoid::kReverse);
 }

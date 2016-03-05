@@ -10,6 +10,7 @@
 #include "Commands/GoalAlign.h"
 #include "Commands/ZeroYaw.h"
 #include "Commands/ShooterSolenoidControl.h"
+#include "Commands/FlipIntake.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -25,7 +26,7 @@ OI::OI() {
     button1LeftBumper.reset(new JoystickButton(driverJoystick.get(), 5));
 
     button2A->WhenPressed(new ShooterSolenoidControl());
-
+    button2X->WhenPressed(new FlipIntake());
     button2B->WhenPressed(new ShootHigh());
 
     button2Start->WhenPressed(new ClimbCommand(1, 0));

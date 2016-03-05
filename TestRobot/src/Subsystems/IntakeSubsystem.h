@@ -13,8 +13,8 @@ public:
 	IntakeSubsystem();
 	void InitDefaultCommand();
 	void Intake(float speed);
-	void SetSolenoidForward();
-	void SetSolenoidReverse();
+	void SetIntakeSolenoidForward();
+	void SetIntakeSolenoidReverse();
 };
 
 #endif

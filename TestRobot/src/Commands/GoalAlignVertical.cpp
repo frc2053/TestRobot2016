@@ -53,6 +53,7 @@ void GoalAlignVertical::Execute()
 
 	std::cout << "tooClose: " << tooClose << std::endl;
 	std::cout << "tooFar: " << tooFar << std::endl;
+	std::cout << "distanceFromGoalAlign: " << distanceY << std::endl;
 	if(tooClose) {
 		//printf("bot is too close!\n");
 		inToleranceY = false;
@@ -79,7 +80,7 @@ void GoalAlignVertical::Execute()
 // Make this return true when this Command no longer needs to run execute()
 bool GoalAlignVertical::IsFinished()
 {
-	return isDone || IsTimedOut();
+	return isDone;
 }
 
 // Called once after isFinished returns true
