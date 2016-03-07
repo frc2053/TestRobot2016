@@ -10,6 +10,9 @@ GoalAlignVertical::GoalAlignVertical(float distanceAway)
 	isDone = false;
 	calrot = 0;
 	adjyaw = 0;
+	XAxis = 0;
+	YAxis = 0;
+	RotAxis = 0;
 	Robot::driveBaseSubsystem->isAlignedY = false;
 }
 

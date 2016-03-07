@@ -10,6 +10,9 @@ GoalAlign::GoalAlign()
 	adjyaw = 0;
 	distanceToCenter = 0;
 	speedX = 0;
+	XAxis = 0;
+	YAxis = 0;
+	RotAxis = 0;
 	//SetTimeout(2);
 	Robot::driveBaseSubsystem->isAlignedX = false;
 }

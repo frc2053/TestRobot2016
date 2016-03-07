@@ -14,6 +14,9 @@ public:
 	void End();
 	void Interrupted();
 private:
+	float XAxis = 0;
+	float YAxis = 0;
+	float RotAxis = 0;
 	bool isDone;
 	float speedY = 0;
 	float distanceY = 0;
