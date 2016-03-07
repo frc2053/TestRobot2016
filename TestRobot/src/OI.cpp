@@ -11,6 +11,9 @@
 #include "Commands/ZeroYaw.h"
 #include "Commands/ShooterSolenoidControl.h"
 #include "Commands/FlipIntake.h"
+#include "Commands/ClimberGroup.h"
+#include "Commands/ClimberSolenoidControl.h"
+#include "Commands/ClimbGroupRetract.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -22,17 +25,20 @@ OI::OI() {
     button2Y.reset(new JoystickButton(gunnerJoystick.get(), 4));
     button2Start.reset(new JoystickButton(gunnerJoystick.get(), 8));
     button2Select.reset(new JoystickButton(gunnerJoystick.get(), 7));
+    button2LeftBumper.reset(new JoystickButton(gunnerJoystick.get(), 5));
 
     button1LeftBumper.reset(new JoystickButton(driverJoystick.get(), 5));
 
     button2A->WhenPressed(new ShooterSolenoidControl());
-    button2X->WhenPressed(new FlipIntake());
-    button2B->WhenPressed(new ShootHigh());
+    button2X->WhenPressed(new ClimberGroup());
+    button2B->WhenPressed(new ClimberSolenoidControl(false));
+    button2Y->WhenPressed(new ClimberSolenoidControl(true));
+    button2LeftBumper->WhenPressed(new ClimbGroupRetract());
 
-    button2Start->WhenPressed(new ClimbCommand(1, 0));
+    button2Start->WhenPressed(new ClimbCommand(.25, 0));
     button2Start->WhenReleased(new ClimbCommand(0, 0));
 
-    button2Select->WhenPressed(new ClimbCommand(-1, 0));
+    button2Select->WhenPressed(new ClimbCommand(-.25, 0));
     button2Select->WhenReleased(new ClimbCommand(0, 0));
 
     button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal());

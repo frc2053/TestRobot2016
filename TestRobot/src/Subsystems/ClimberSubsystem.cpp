@@ -4,7 +4,7 @@
 ClimberSubsystem::ClimberSubsystem() : Subsystem("ClimberSubsystem")
 {
 	climbTalonRight = RobotMap::climberSubsystemclimbTalonRight;
-	climbTalonLeft = RobotMap::climberSubsystemclimbTalonLeft;
+	//climbTalonLeft = RobotMap::climberSubsystemclimbTalonLeft;
 	climbSolenoid = RobotMap::climberSubsystemclimbSolenoid;
 }
 
@@ -16,13 +16,13 @@ void ClimberSubsystem::InitDefaultCommand()
 void ClimberSubsystem::ClimbMotor(float speed)
 {
 	climbTalonRight->Set(speed);
-	climbTalonLeft->Set(speed);
+	//climbTalonLeft->Set(speed);
 }
 
-void ClimberSubsystem::ClimbMotorLeft(float speed)
+/*void ClimberSubsystem::ClimbMotorLeft(float speed)
 {
 	climbTalonLeft->Set(speed);
-}
+}*/
 
 void ClimberSubsystem::ClimbMotorRight(float speed)
 {

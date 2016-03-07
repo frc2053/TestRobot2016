@@ -19,7 +19,7 @@ private:
 	std::shared_ptr<Timer> timer;
 	float timeCurrent;
 	float timeTarget;
-	const float pnuematicDelay = .2;
+	const float pnuematicDelay = 2.5;
 };
 
 #endif
