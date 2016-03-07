@@ -28,10 +28,17 @@ void GoalAlignVertical::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void GoalAlignVertical::Execute()
 {
+	XAxis = Robot::oi->getdriverJoystick()->GetRawAxis(0);
+	YAxis = Robot::oi->getdriverJoystick()->GetRawAxis(1);
+	RotAxis = Robot::oi->getdriverJoystick()->GetRawAxis(4);
 	Robot::driveBaseSubsystem->isAlignedY = false;
 	distanceY = Robot::visionClass->getDistanceY();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
+
+	if(XAxis > .2 || YAxis > .2 || RotAxis > .2) {
+		isDone = true;
+	}
 
 	if(distanceY >= 144) {
 		speedY = .25;
