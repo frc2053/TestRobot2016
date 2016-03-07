@@ -50,17 +50,18 @@ void GoalAlign::Execute()
 
 	if(distanceToCenter <= 160)
 	{
-		speedX = 0.3;
+		speedX = 0.6;
 	}
 	if(distanceToCenter <= 80)
 	{
-		speedX = 0.3;
+		speedX = 0.4;
 	}
 	if(distanceToCenter <= 40)
 	{
 		speedX = 0.3;
 	}
 
+	targetX = targetX + 10;
 	if(targetX >= (centerX + toleranceX)) {
 		inToleranceX = false;
 		Robot::driveBaseSubsystem->MecanumDrive(speedX, 0, calrot, adjyaw);
