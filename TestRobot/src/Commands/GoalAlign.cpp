@@ -31,12 +31,19 @@ void GoalAlign::Initialize()
 // Called repeatedly when this Command is scheduled to run
 void GoalAlign::Execute()
 {
+	XAxis = Robot::oi->getdriverJoystick()->GetRawAxis(0);
+	YAxis = Robot::oi->getdriverJoystick()->GetRawAxis(1);
+	RotAxis = Robot::oi->getdriverJoystick()->GetRawAxis(4);
 	Robot::driveBaseSubsystem->isAlignedX = false;
 	distanceToCenter = Robot::visionClass->getDistanceToCenter();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
 	targetX = Robot::visionClass->getTargetX();
 	std::cout << "TargetX: " << targetX << std::endl;
+	
+	if(XAxis > .2 || YAxis > .2 || RotAxis > .2) {
+		isDone = true;
+	}
 
 	if(distanceToCenter <= 160)
 	{
