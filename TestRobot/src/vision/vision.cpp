@@ -58,11 +58,11 @@ VisionClass::VisionClass() {
 				}
  		}
  		//std::cout << "Size of selected: " << selected.size() << std::endl;
- 		for(unsigned int i = 0; i < selected.size(); i++){
+ 		/*for(unsigned int i = 0; i < selected.size(); i++){
  			cv::Rect rec = cv::boundingRect(selected[i]);
  			//std::cout << "looping on selected!" << std::endl;
  			cv::rectangle(matResize, rec.br(), rec.tl(), BLACK);
- 		}
+ 		}*/
  		//
  //			if there is only 1 target, then we have found the target we want
  		if(selected.size() == 1){
@@ -75,14 +75,14 @@ VisionClass::VisionClass() {
  			distance = (TOP_TARGET_HEIGHT - TOP_CAMERA_HEIGHT) /
  					tan((y * VERTICAL_FOV / 2.0 + CAMERA_ANGLE) * PI / 180);
  //				angle to target...would not rely on this
- 			targetX = rec.tl().x + rec.width / 2;
- 			targetX = (2 * (targetX / matResize.rows)) - 1;
- 			azimuth = normalize360(targetX*HORIZONTAL_FOV /2.0 + 0);
+ 			//targetX = rec.tl().x + rec.width / 2;
+ 			//targetX = (2 * (targetX / matResize.rows)) - 1;
+ 			//azimuth = normalize360(targetX*HORIZONTAL_FOV /2.0 + 0);
  //				drawing info on target
  			center =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2);
- 			cv::Point centerw =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);
- 			int distanceX = center.x;
- 			int distanceY = center.y;
+ 			//cv::Point centerw =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);
+ 			//int distanceX = center.x;
+ 			//int distanceY = center.y;
  			//cv::putText(matResize, std::to_string(distanceX), center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			//cv::putText(matResize, std::to_string(distanceY), centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
  			//std::cout << "Center: " << center << std::endl;
