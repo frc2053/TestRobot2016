@@ -63,11 +63,14 @@ void RobotMap::init() {
 
     intakeSubsystemintakeTalon.reset(new CANTalon(1));
     intakeSubsystemintakeTalon->SetSafetyEnabled(false);
+    intakeSubsystemintakeTalon->SetInverted(true);
     intakeSubsystemintakeSolenoid.reset(new DoubleSolenoid(4,5));
 
     climberSubsystemclimbTalonRight.reset(new CANTalon(7));
+    climberSubsystemclimbTalonRight->SetInverted(true);
     climberSubsystemclimbSolenoid.reset(new DoubleSolenoid(2,3));
     climberSubsystemclimbTalonLeft.reset(new CANTalon(5));
+    climberSubsystemclimbTalonLeft->SetInverted(true);
     climberSubsystemclimbTalonLeft->SetControlMode(CANTalon::kFollower);
     climberSubsystemclimbTalonLeft->Set(7);
 
