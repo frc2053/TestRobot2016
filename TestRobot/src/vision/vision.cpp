@@ -37,16 +37,16 @@ VisionClass::VisionClass() {
  		contours.clear();
  		selected.clear();
  //			capture from the axis camera
- 		printf("before read\n");
+ 		//printf("before read\n");
  		videoCapture.read(matOriginal);
- 		printf("after read\n");
+ 		//printf("after read\n");
  //			captures from a static file for testing
  		cv::imwrite("/home/lvuser/original.jpg", matOriginal);
  		cv::resize(matOriginal, matResize, resize);
  		cv::inRange(matResize, LOWER_BOUNDS, UPPER_BOUNDS, matThresh);
  		cv::findContours(matThresh, contours, matHeirarchy, cv::RETR_EXTERNAL,
  				cv::CHAIN_APPROX_SIMPLE);
- 		std::cout << "Size of contours: " << contours.size() << std::endl;
+ 		//std::cout << "Size of contours: " << contours.size() << std::endl;
  //			make sure the contours that are detected are at least 20x20
  //			pixels with an area of 400 and an aspect ration greater then 1
  		//printf("looping\n");
@@ -57,7 +57,7 @@ VisionClass::VisionClass() {
 				selected.push_back(contours[i]);
 				}
  		}
- 		std::cout << "Size of selected: " << selected.size() << std::endl;
+ 		//std::cout << "Size of selected: " << selected.size() << std::endl;
  		for(unsigned int i = 0; i < selected.size(); i++){
  			cv::Rect rec = cv::boundingRect(selected[i]);
  			//std::cout << "looping on selected!" << std::endl;
@@ -83,16 +83,16 @@ VisionClass::VisionClass() {
  			cv::Point centerw =  cv::Point(rec.br().x-rec.width / 2 - 15,rec.br().y - rec.height / 2 - 20);
  			int distanceX = center.x;
  			int distanceY = center.y;
- 			cv::putText(matResize, std::to_string(distanceX), center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
- 			cv::putText(matResize, std::to_string(distanceY), centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
- 			std::cout << "Center: " << center << std::endl;
+ 			//cv::putText(matResize, std::to_string(distanceX), center, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
+ 			//cv::putText(matResize, std::to_string(distanceY), centerw, cv::FONT_HERSHEY_PLAIN, 1, GREEN);
+ 			//std::cout << "Center: " << center << std::endl;
  			std::cout << "Distance: " << distance << std::endl;
  			visionMutex.unlock();
  		}
  		//cv::imwrite("/home/lvuser/output.jpg", matResize);
- 		cvtColor(matResize, matGray, cv::COLOR_BGR2GRAY, 0);
- 		imaqArrayToImage(myImaqImage, matGray.data, matGray.cols, matGray.rows);
- 		CameraServer::GetInstance()->SetImage(myImaqImage);
+ 		//cvtColor(matResize, matGray, cv::COLOR_BGR2GRAY, 0);
+ 		//imaqArrayToImage(myImaqImage, matGray.data, matGray.cols, matGray.rows);
+ 		//CameraServer::GetInstance()->SetImage(myImaqImage);
  	}
 }
 

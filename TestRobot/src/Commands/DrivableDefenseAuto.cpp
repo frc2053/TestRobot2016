@@ -8,6 +8,5 @@ DrivableDefenseAuto::DrivableDefenseAuto()
 	//AddParallel(new DriveCommandAuto(0, -.8, 0, 1.5, 0));
 	AddParallel(new DriveCommandAuto(0, -.8, 0, 2, 0));
 	AddSequential(new ShooterControl(-1200, 2));
-	AddSequential(new ShooterControl(-1200, 0.5));
 	printf("after sequential for defense auto!\n");
 }

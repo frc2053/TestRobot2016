@@ -42,7 +42,7 @@ void GoalAlign::Execute()
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
 	targetX = Robot::visionClass->getTargetX();
-	std::cout << "TargetX: " << targetX << std::endl;
+	//std::cout << "TargetX: " << targetX << std::endl;
 	
 	if(XAxis > .2 || YAxis > .2 || RotAxis > .2) {
 		isDone = true;
@@ -50,7 +50,7 @@ void GoalAlign::Execute()
 
 	if(distanceToCenter <= 160)
 	{
-		speedX = 0.6;
+		speedX = 0.5;
 	}
 	if(distanceToCenter <= 80)
 	{
@@ -58,10 +58,10 @@ void GoalAlign::Execute()
 	}
 	if(distanceToCenter <= 40)
 	{
-		speedX = 0.3;
+		speedX = 0.35;
 	}
 
-	targetX = targetX + 10;
+	//targetX = targetX - 2;
 	if(targetX >= (centerX + toleranceX)) {
 		inToleranceX = false;
 		Robot::driveBaseSubsystem->MecanumDrive(speedX, 0, calrot, adjyaw);
@@ -76,7 +76,7 @@ void GoalAlign::Execute()
 
 	if(inToleranceX) {
 		Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
-		printf("Target aligned in X dir!\n");
+		//printf("Target aligned in X dir!\n");
 		Robot::driveBaseSubsystem->isAlignedX = true;
 		isDone = true;
 	}

@@ -44,17 +44,17 @@ void GoalAlignVertical::Execute()
 	}
 
 	if(distanceY >= 144) {
-		speedY = .25;
+		speedY = .15;
 	}
 	if(distanceY >= 120) {
-		speedY = .25;
+		speedY = .15;
 
 	}
 	if(distanceY >= 96) {
-		speedY = .25;
+		speedY = .15;
 	}
 	if(distanceY >= 60) {
-		speedY = .25;
+		speedY = .15;
 	}
 
 	bool tooClose = distanceY < (distanceTarget - toleranceY);
