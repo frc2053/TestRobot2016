@@ -3,6 +3,7 @@
 GoalAlignVertical::GoalAlignVertical(float distanceAway)
 {
 	Requires(Robot::driveBaseSubsystem.get());
+	Robot::driveBaseSubsystem->SetCanRunCamera(true);
 	distanceTarget = distanceAway;
 	inToleranceY = false;
 	distanceY = 0;
@@ -96,6 +97,7 @@ bool GoalAlignVertical::IsFinished()
 // Called once after isFinished returns true
 void GoalAlignVertical::End()
 {
+	Robot::driveBaseSubsystem->SetCanRunCamera(false);
 	Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
 }
 

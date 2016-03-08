@@ -28,6 +28,9 @@ public:
 	bool getIsRotDoneOverride();
 	bool IsAlignedX();
 	bool IsAlignedY();
+	bool IsReadyToRunCamera();
+	void SetCanRunCamera(bool canRun);
+	bool GetCanRunCamera();
 	float calculatedoffset; //calculated for imu offset
 	float yawoffset; //param
 	float IMU_Yaw; //return value for imuoffset
@@ -35,6 +38,8 @@ public:
 	TigerDrive* tigerDrive;
 	bool isAlignedX;
 	bool isAlignedY;
+	bool canRunCamera;
+	std::mutex driveBaseMutex;
 };
 
 #endif

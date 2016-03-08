@@ -13,7 +13,7 @@
 #include <opencv2/opencv.hpp>
 #include <cmath>
 #include <ctime>
-#include "WPILib.h"
+#include "../Robot.h"
 
 class VisionClass {
 public:
@@ -76,6 +76,7 @@ private:
 	 std::vector<std::vector<cv::Point>> selected;
 
 	 int pictureTaker = 0;
+	 bool canRun;
 };
 
 
