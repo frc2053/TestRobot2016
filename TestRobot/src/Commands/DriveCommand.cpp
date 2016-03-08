@@ -1,7 +1,7 @@
 #include "DriveCommand.h"
 
 DriveCommand::DriveCommand(): Command() {
-	printf("DriveCommand Constructor!\n");
+	//printf("DriveCommand Constructor!\n");
 	Requires(Robot::driveBaseSubsystem.get());
 
 	XAxis = 0;

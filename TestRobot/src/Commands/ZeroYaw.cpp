@@ -1,7 +1,7 @@
 #include "ZeroYaw.h"
 
 ZeroYaw::ZeroYaw() {
-	printf("ZeroYaw constructor!\n");
+	//printf("ZeroYaw constructor!\n");
 	Requires(Robot::driveBaseSubsystem.get());
 }
 

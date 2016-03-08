@@ -75,14 +75,14 @@ void GoalAlignVertical::Execute()
 		Robot::driveBaseSubsystem->MecanumDrive(0, -speedY, calrot, adjyaw);
 	}
 	else {
-		printf("inTolerance == true\n");
+		//printf("inTolerance == true\n");
 		inToleranceY = true;
 	}
 
 	if(inToleranceY) {
 		Robot::driveBaseSubsystem->isAlignedY = true;
 		Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
-		printf("Target aligned in Y!\n");
+		//printf("Target aligned in Y!\n");
 		isDone = true;
 	}
 }

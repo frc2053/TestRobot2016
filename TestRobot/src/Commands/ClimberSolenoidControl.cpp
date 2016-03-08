@@ -27,7 +27,7 @@ void ClimberSolenoidControl::Execute()
 	timeCurrent = timer->Get();
 	std::cout << "timeCurrent: " << timeCurrent << std::endl;
 	if(timeCurrent >= timeTarget) {
-		printf("isDone!\n");
+		//printf("isDone!\n");
 		isDone = true;
 	}
 	else {

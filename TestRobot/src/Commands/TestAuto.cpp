@@ -9,11 +9,11 @@
 
 TestAuto::TestAuto()
 {
-	printf("constructor for test auto!\n");
+	//printf("constructor for test auto!\n");
 	AddSequential(new AlignVerticalAndHorizontal());
-	AddSequential(new DriveCommandAuto(0, 0, 0, .5, 0));
-	AddSequential(new ShooterControl(-3200, .4));
+	AddSequential(new GoalAlign());
+	AddSequential(new ShooterControl(-3200, .2));
 	AddSequential(new ShooterControl(6000, 1));
 	AddSequential(new ShooterSolenoidControl());
-	printf("after sequential for test auto!\n");
+	//printf("after sequential for test auto!\n");
 }

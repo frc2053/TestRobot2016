@@ -29,7 +29,7 @@ VisionClass::VisionClass() {
  void VisionClass::processImage(){
 	 videoCapture.set(CV_CAP_PROP_EXPOSURE, 1);
 	//buttonPressed = Robot::oi->getDriveJoystick()->GetRawButton(5);
-	printf("IM AM IN PROCESS IMAGE!\n");
+	//printf("IM AM IN PROCESS IMAGE!\n");
  	double x,y,targetX,targetY,azimuth;
  	//int FrameCount = 0;
  	while(true) {

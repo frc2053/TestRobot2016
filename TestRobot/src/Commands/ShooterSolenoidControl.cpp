@@ -29,7 +29,7 @@ void ShooterSolenoidControl::Execute()
 	std::cout << "timeCurrent: " << timeCurrent << std::endl;
 	if(timeCurrent >= timeTarget) {
 		Robot::shooterSubsystem->SetSolenoidReverse();
-		printf("isDone!\n");
+		//printf("isDone!\n");
 		isDone = true;
 	}
 	else {

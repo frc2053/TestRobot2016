@@ -4,7 +4,7 @@
 #include "../Commands/DriveCommand.h"
 
 DriveBaseSubsystem::DriveBaseSubsystem() : Subsystem("DriveBaseSubsystem") {
-	printf("DriveBaseSubsystem!\n");
+	//printf("DriveBaseSubsystem!\n");
     frontLeftTalon = RobotMap::driveBaseSubsystemfrontLeftTalon;
     frontRightTalon = RobotMap::driveBaseSubsystemfrontRightTalon;
     backLeftTalon = RobotMap::driveBaseSubsystembackLeftTalon;

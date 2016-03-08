@@ -3,7 +3,7 @@
 #include "../Commands/ShooterControl.h"
 
 ShooterSubsystem::ShooterSubsystem() : Subsystem("ShooterSubsystem") {
-	printf("Shooter Subsystem!\n");
+	//printf("Shooter Subsystem!\n");
     shooterTalonLeft = RobotMap::shooterSubsystemshooterTalonLeft;
     shooterTalonRight = RobotMap::shooterSubsystemshooterTalonRight;
     shooterSolenoid = RobotMap::shooterSubsystemshooterSolenoid;
