@@ -3,7 +3,6 @@
 GoalAlign::GoalAlign()
 {
 	Requires(Robot::driveBaseSubsystem.get());
-	Robot::driveBaseSubsystem->SetCanRunCamera(true);
 	isDone = false;
 	targetX = 0;
 	inToleranceX = false;
@@ -92,7 +91,6 @@ bool GoalAlign::IsFinished()
 // Called once after isFinished returns true
 void GoalAlign::End()
 {
-	Robot::driveBaseSubsystem->SetCanRunCamera(false);
 	Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
 }
 

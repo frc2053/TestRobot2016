@@ -16,7 +16,6 @@
 #include "OI.h"
 #include "Subsystems/DriveBaseSubsystem.h"
 #include "vision/vision.h"
-class VisionClass;
 
 class Robot : public IterativeRobot {
 public:

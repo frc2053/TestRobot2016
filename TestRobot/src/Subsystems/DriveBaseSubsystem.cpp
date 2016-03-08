@@ -16,7 +16,6 @@ DriveBaseSubsystem::DriveBaseSubsystem() : Subsystem("DriveBaseSubsystem") {
 	calculatedoffset = 0;
 	yawoffset = 0;
 	isAlignedX = false;
-	canRunCamera = false;
 	isAlignedY = false;
 }
 
@@ -72,16 +71,6 @@ bool DriveBaseSubsystem::getIsRotDone()
 bool DriveBaseSubsystem::getIsRotDoneOverride()
 {
 	return tigerDrive->getisRotDoneOverride();
-}
-
-void DriveBaseSubsystem::SetCanRunCamera(bool canRun) {
-	driveBaseMutex.lock();
-	canRunCamera = canRun;
-	driveBaseMutex.unlock();
-}
-
-bool DriveBaseSubsystem::GetCanRunCamera() {
-	return canRunCamera;
 }
 
 bool DriveBaseSubsystem::IsAlignedX() {
