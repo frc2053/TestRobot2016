@@ -54,13 +54,13 @@ void DriveCommand::Execute() {
 	ButtonBPressed = Robot::oi->getdriverJoystick()->GetRawButton(2);
 	if(ButtonBPressed == true)
 	{
-		SetAngle = 90;
+		SetAngle = 135;
 	}
 
 	ButtonXPressed = Robot::oi->getdriverJoystick()->GetRawButton(3);
 	if(ButtonXPressed == true)
 	{
-		SetAngle = -90;
+		SetAngle = -135;
 	}
 
 	//Start if the button is pressed and we arent already going, or if we aren't done from previous conditions
