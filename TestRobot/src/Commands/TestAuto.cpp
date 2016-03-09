@@ -10,8 +10,8 @@
 TestAuto::TestAuto()
 {
 	//printf("constructor for test auto!\n");
-	AddSequential(new AlignVerticalAndHorizontal());
-	AddSequential(new GoalAlign());
+	AddSequential(new AlignVerticalAndHorizontal(0));
+	AddSequential(new GoalAlign(0));
 	AddSequential(new ShooterControl(-3200, .2));
 	AddSequential(new ShooterControl(6000, 1));
 	AddSequential(new ShooterSolenoidControl());

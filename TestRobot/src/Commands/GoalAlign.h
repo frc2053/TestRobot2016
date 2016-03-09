@@ -7,7 +7,7 @@
 class GoalAlign: public Command
 {
 public:
-	GoalAlign();
+	GoalAlign(float angle);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -26,6 +26,7 @@ private:
 	float XAxis;
 	float YAxis;
 	float RotAxis;
+	float targetAngle;
 };
 
 #endif

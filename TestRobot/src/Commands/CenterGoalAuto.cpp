@@ -1,13 +1,17 @@
 #include "CenterGoalAuto.h"
-#include "GoalAlignVertical.h"
-#include "GoalAlign.h"
-#include "ShootHigh.h"
 #include "DriveCommandAuto.h"
+#include "ShootHigh.h"
+#include "DoNothing.h"
+#include "ShooterControl.h"
+#include "ShooterSolenoidControl.h"
+#include "GoalAlign.h"
+#include "AlignVerticalAndHorizontal.h"
 
 CenterGoalAuto::CenterGoalAuto()
 {
-	AddSequential(new GoalAlignVertical(120)); //align vertically with goal
-	AddSequential(new GoalAlign()); //align horizontally with goal
-	AddSequential(new ShootHigh()); //shoot the ball
-	AddSequential(new DriveCommandAuto(0, 0, 0, 2, 180)); //rotate to 180 to drive back through defence
+	AddSequential(new AlignVerticalAndHorizontal(0));
+	AddSequential(new GoalAlign(0));
+	AddSequential(new ShooterControl(-3200, .2));
+	AddSequential(new ShooterControl(6000, 1));
+	AddSequential(new ShooterSolenoidControl());
 }

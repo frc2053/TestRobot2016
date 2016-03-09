@@ -1,6 +1,6 @@
 #include "GoalAlign.h"
 
-GoalAlign::GoalAlign()
+GoalAlign::GoalAlign(float angle)
 {
 	Requires(Robot::driveBaseSubsystem.get());
 	isDone = false;
@@ -8,6 +8,7 @@ GoalAlign::GoalAlign()
 	inToleranceX = false;
 	calrot = 0;
 	adjyaw = 0;
+	targetAngle = angle;
 	distanceToCenter = 0;
 	speedX = 0;
 	XAxis = 0;
@@ -40,7 +41,7 @@ void GoalAlign::Execute()
 	Robot::driveBaseSubsystem->isAlignedX = false;
 	distanceToCenter = Robot::visionClass->getDistanceToCenter();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
-	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
+	calrot = Robot::driveBaseSubsystem->CalculateRotValue(targetAngle, 1);
 	targetX = Robot::visionClass->getTargetX();
 	//std::cout << "TargetX: " << targetX << std::endl;
 	

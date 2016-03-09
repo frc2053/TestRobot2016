@@ -7,7 +7,7 @@
 class AlignVerticalAndHorizontal: public CommandGroup
 {
 public:
-	AlignVerticalAndHorizontal();
+	AlignVerticalAndHorizontal(float angle);
 };
 
 #endif
