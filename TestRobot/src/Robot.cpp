@@ -1,5 +1,8 @@
 #include "Robot.h"
-#include "Commands/DrivableDefenseAuto.h"
+#include "Commands/Moat.h"
+#include "Commands/RockWall.h"
+#include "Commands/Ramparts.h"
+#include "Commands/RoughTerrain.h"
 #include "Commands/CenterGoalAuto.h"
 #include "Commands/DoNothing.h"
 #include "Commands/LeftGoalAuto.h"
@@ -40,11 +43,14 @@ void Robot::RobotInit() {
 	chooserGoal->AddObject("Do Nothing", new DoNothing(15));
 	chooserGoal->AddObject("TestAuto", new TestAuto());
 
-	chooserObstacle->AddDefault("Drivable Defense", new DrivableDefenseAuto());
+	chooserObstacle->AddDefault("Rough Terrain", new RoughTerrain());
 	//chooserObstacle->AddObject("Portcullis", new PortcullisControl());
 	//chooserObstacle->AddObject("Cheval De Frise", new ChevalControl());
 	//chooserObstacle->AddObject("Drawbridge", new DrawbridgeControl());
 	//chooserObstacle->AddObject("Sally Door", new SallyDoorControl());
+	chooserObstacle->AddObject("Rockwall", new RockWall());
+	chooserObstacle->AddObject("Ramparts", new Ramparts());
+	chooserObstacle->AddObject("Moat", new Moat());
 	chooserObstacle->AddObject("Do nothing", new DoNothing(15));
 	SmartDashboard::PutData("Goal Chooser", chooserGoal);
 	SmartDashboard::PutData("Obstacle Chooser", chooserObstacle);
