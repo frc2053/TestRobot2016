@@ -11,6 +11,7 @@ CenterGoalAuto::CenterGoalAuto()
 {
 	AddSequential(new AlignVerticalAndHorizontal(0));
 	AddSequential(new GoalAlign(0));
+	AddSequential(new DriveCommandAuto(0,0,0,.5,-5));
 	AddSequential(new ShooterControl(-3200, .2));
 	AddSequential(new ShooterControl(6000, 1));
 	AddSequential(new ShooterSolenoidControl());
