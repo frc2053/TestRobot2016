@@ -15,10 +15,10 @@ void LEDCommand::Initialize()
 void LEDCommand::Execute()
 {
 	if(Robot::climberSubsystem->GetForwardLimit()) {
-		Robot::ledSubsystem->SetRedLED(1);
-		Robot::ledSubsystem->SetGreenLED(0.05);
+		Robot::ledSubsystem->SetRedLED(0);
+		Robot::ledSubsystem->SetGreenLED(1);
 		Robot::ledSubsystem->SetBlueLED(0);
-		Wait(0.25);
+		Wait(.7);
 		Robot::ledSubsystem->SetRedLED(0);
 		Robot::ledSubsystem->SetGreenLED(0);
 		Robot::ledSubsystem->SetBlueLED(0);
