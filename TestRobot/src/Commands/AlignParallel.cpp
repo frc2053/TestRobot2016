@@ -73,10 +73,10 @@ void AlignParallel::Execute()
 	}
 
 	if(distanceY >= 144) {
-		speedY = .3;
+		speedY = .5;
 	}
 	if(distanceY >= 120) {
-		speedY = .3;
+		speedY = .4;
 
 	}
 	if(distanceY >= 96) {
@@ -92,12 +92,13 @@ void AlignParallel::Execute()
 	if(tooClose) {
 		printf("bot is too close!\n");
 		inToleranceY = false;
-		Robot::driveBaseSubsystem->MecanumDrive(0, speedY, calrot, adjyaw);
+		//Robot::driveBaseSubsystem->MecanumDrive(0, speedY, calrot, adjyaw);
 	}
 	else if(tooFar) {
 		printf("bol is too far!\n");
 		inToleranceY = false;
-		Robot::driveBaseSubsystem->MecanumDrive(0, -speedY, calrot, adjyaw);
+		speedY = speedY * -1;
+		//Robot::driveBaseSubsystem->MecanumDrive(0, -speedY, calrot, adjyaw);
 	}
 	else {
 		printf("inTolerance == true\n");
@@ -107,15 +108,18 @@ void AlignParallel::Execute()
 	//targetX = targetX - 2;
 	if(targetX >= (centerX + toleranceX)) {
 		inToleranceX = false;
-		Robot::driveBaseSubsystem->MecanumDrive(speedX, 0, calrot, adjyaw);
+		//Robot::driveBaseSubsystem->MecanumDrive(speedX, 0, calrot, adjyaw);
 	}
 	else if(targetX <= (centerX - toleranceX)) {
 		inToleranceX = false;
-		Robot::driveBaseSubsystem->MecanumDrive(-speedX, 0, calrot, adjyaw);
+		speedX = speedX * -1;
+		//Robot::driveBaseSubsystem->MecanumDrive(-speedX, 0, calrot, adjyaw);
 	}
 	else {
 		inToleranceX = true;
 	}
+
+	Robot::driveBaseSubsystem->MecanumDrive(speedX, speedY, calrot, adjyaw);
 
 	if(inToleranceX && inToleranceY) {
 		Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, 0);
