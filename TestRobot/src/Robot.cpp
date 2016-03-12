@@ -8,6 +8,7 @@
 #include "Commands/LeftGoalAuto.h"
 #include "Commands/RightGoalAuto.h"
 #include "Commands/TestAuto.h"
+#include "Commands/AlignParallel.h"
 
 std::shared_ptr<DriveBaseSubsystem> Robot::driveBaseSubsystem;
 std::shared_ptr<ShooterSubsystem> Robot::shooterSubsystem;

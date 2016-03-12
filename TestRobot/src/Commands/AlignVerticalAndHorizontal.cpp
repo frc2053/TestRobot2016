@@ -6,6 +6,6 @@
 AlignVerticalAndHorizontal::AlignVerticalAndHorizontal(float angle)
 {
 	AddSequential(new GoalAlign(angle));
-	AddSequential(new GoalAlignVertical(96));
+	AddSequential(new GoalAlignVertical(100));
 	//AddSequential(new DriveCommandAuto(0,0,0,.5,0));
 }
