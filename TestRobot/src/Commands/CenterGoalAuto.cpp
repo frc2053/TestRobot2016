@@ -10,7 +10,7 @@
 
 CenterGoalAuto::CenterGoalAuto()
 {
-	AddSequential(new AlignParallel(0, 100));
+	AddSequential(new AlignParallel(0, 101));
 	Wait(.5);
 	AddSequential(new AlignVerticalAndHorizontal(0));
 	//AddSequential(new DriveCommandAuto(0,0,0,.3,-5));
