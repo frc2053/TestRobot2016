@@ -61,22 +61,22 @@ void AlignParallel::Execute()
 
 	if(distanceToCenter <= 160)
 	{
-		speedX = 0.7;
+		speedX = 0.5;
 	}
 	if(distanceToCenter <= 80)
 	{
-		speedX = 0.6;
+		speedX = 0.4;
 	}
 	if(distanceToCenter <= 40)
 	{
-		speedX = 0.5;
+		speedX = 0.3;
 	}
 
 	if(distanceY >= 144) {
-		speedY = .5;
+		speedY = .4;
 	}
 	if(distanceY >= 120) {
-		speedY = .4;
+		speedY = .3;
 
 	}
 	if(distanceY >= 96) {

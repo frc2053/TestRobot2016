@@ -48,7 +48,6 @@ void GoalAlignVertical::Execute()
 	}
 	if(distanceY >= 120) {
 		speedY = .15;
-
 	}
 	if(distanceY >= 96) {
 		speedY = .15;
