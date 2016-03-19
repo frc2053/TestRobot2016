@@ -24,6 +24,8 @@ public:
 	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonLeft;
 	static std::shared_ptr<CANTalon> shooterSubsystemshooterTalonRight;
 	static std::shared_ptr<DoubleSolenoid> shooterSubsystemshooterSolenoid;
+	static std::shared_ptr<Servo> shooterSubsystemshooterServoLeft;
+	static std::shared_ptr<Servo> shooterSubsystemshooterServoRight;
 
 	static std::shared_ptr<CANTalon> intakeSubsystemintakeTalon;
 	static std::shared_ptr<DoubleSolenoid> intakeSubsystemintakeSolenoid;

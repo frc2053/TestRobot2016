@@ -11,6 +11,8 @@ std::shared_ptr<RobotDrive> RobotMap::driveBaseSubsystemrobotDrive;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonLeft;
 std::shared_ptr<CANTalon> RobotMap::shooterSubsystemshooterTalonRight;
 std::shared_ptr<DoubleSolenoid> RobotMap::shooterSubsystemshooterSolenoid;
+std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServoLeft;
+std::shared_ptr<Servo> RobotMap::shooterSubsystemshooterServoRight;
 
 std::shared_ptr<CANTalon> RobotMap::intakeSubsystemintakeTalon;
 std::shared_ptr<DoubleSolenoid> RobotMap::intakeSubsystemintakeSolenoid;
@@ -60,6 +62,8 @@ void RobotMap::init() {
     //feed forward 0.185
 
     shooterSubsystemshooterSolenoid.reset(new DoubleSolenoid(0,1));
+    shooterSubsystemshooterServoLeft.reset(new Servo(1));
+    shooterSubsystemshooterServoRight.reset(new Servo(0));
 
     intakeSubsystemintakeTalon.reset(new CANTalon(1));
     intakeSubsystemintakeTalon->SetSafetyEnabled(false);

@@ -33,7 +33,11 @@ void ShooterSolenoidControl::Execute()
 		isDone = true;
 	}
 	else {
-		Robot::shooterSubsystem->SetSolenoidForward();
+		if(Robot::shooterSubsystem->GetEncoderVelocityRight() < -5500) {
+			Robot::shooterSubsystem->SetSolenoidForward();
+			Robot::shooterSubsystem->SetAngleLeftServo(0);
+			Robot::shooterSubsystem->SetAngleRightServo(200);
+		}
 		isDone = false;
 	}
 }

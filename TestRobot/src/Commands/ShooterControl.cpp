@@ -41,10 +41,14 @@ void ShooterControl::Execute()
 		else if(leftTrigger2 > 0.2) {
 			Robot::shooterSubsystem->Shoot(-1500);
 			Robot::intakeSubsystem->Intake(1);
-		}
+			Robot::shooterSubsystem->SetAngleLeftServo(0);
+			Robot::shooterSubsystem->SetAngleRightServo(200);
+		}//ROBOT.RUN
 		else {
 			Robot::shooterSubsystem->Shoot(0);
 			Robot::intakeSubsystem->Intake(0);
+			Robot::shooterSubsystem->SetAngleLeftServo(70);
+			Robot::shooterSubsystem->SetAngleRightServo(110);
 		}
 		isDone = true;
 	}
