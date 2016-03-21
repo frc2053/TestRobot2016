@@ -17,11 +17,12 @@ std::shared_ptr<ClimberSubsystem> Robot::climberSubsystem;
 std::shared_ptr<LEDSubsystem> Robot::ledSubsystem;
 std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
+std::shared_ptr<NetworkTable> Robot::table;
 PowerDistributionPanel* pdp;
 Task* visionTask;
 
 void Vision() {
-    Robot::visionClass->visionTest();
+   // Robot::visionClass->visionTest();
 }
 
 void Robot::RobotInit() {
@@ -60,6 +61,11 @@ void Robot::RobotInit() {
 	visionTask = new Task("Vision",(FUNCPTR)Vision,Task::kDefaultPriority + 1);
 	pdp = new PowerDistributionPanel();
 	Robot::driveBaseSubsystem->imuRobot->ZeroYaw();
+
+	NetworkTable::SetIPAddress("10.20.53.21");
+	NetworkTable::SetClientMode();
+	NetworkTable::Initialize();
+    table = NetworkTable::GetTable("vision");
   }
 
 void Robot::DisabledInit(){

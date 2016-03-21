@@ -39,6 +39,7 @@ public:
 	static std::shared_ptr<DigitalOutput> ledSubsystemBlueLED;
 
 	static std::shared_ptr<CANTalon> defenseSubsystemTalon;
+
 	static void init();
 };
 #endif

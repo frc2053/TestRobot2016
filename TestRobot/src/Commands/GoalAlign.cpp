@@ -39,10 +39,13 @@ void GoalAlign::Execute()
 	YAxis = Robot::oi->getdriverJoystick()->GetRawAxis(1);
 	RotAxis = Robot::oi->getdriverJoystick()->GetRawAxis(4);
 	Robot::driveBaseSubsystem->isAlignedX = false;
-	distanceToCenter = Robot::visionClass->getDistanceToCenter();
+	distanceToCenter = Robot::table->GetNumber("center", 0.0);
+	std::cout << "distanceToCenter: " << distanceToCenter << std::endl;
+	//distanceToCenter = Robot::visionClass->getDistanceToCenter();
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(targetAngle, 1);
-	targetX = Robot::visionClass->getTargetX();
+	targetX = Robot::table->GetNumber("targetX", 0.0);
+	std::cout << "targetX: " << targetX << std::endl;
 	//std::cout << "TargetX: " << targetX << std::endl;
 	
 	if(XAxis > .2 || YAxis > .2 || RotAxis > .2) {

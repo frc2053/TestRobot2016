@@ -41,7 +41,8 @@ OI::OI() {
     button2Select->WhenPressed(new ClimbCommand(-1, 0));
     button2Select->WhenReleased(new ClimbCommand(0, 0));
 
-    button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal(0));
+    //button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal(0));
+    button1LeftBumper->WhenPressed(new GoalAlign(0));
 
     SmartDashboard::PutData("ZeroYaw", new ZeroYaw());
 }

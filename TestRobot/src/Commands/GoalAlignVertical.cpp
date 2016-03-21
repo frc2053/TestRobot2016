@@ -35,7 +35,7 @@ void GoalAlignVertical::Execute()
 	YAxis = Robot::oi->getdriverJoystick()->GetRawAxis(1);
 	RotAxis = Robot::oi->getdriverJoystick()->GetRawAxis(4);
 	Robot::driveBaseSubsystem->isAlignedY = false;
-	distanceY = Robot::visionClass->getDistanceY();
+	distanceY = Robot::table->GetNumber("distance", 0.0);
 	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	calrot = Robot::driveBaseSubsystem->CalculateRotValue(0, 1);
 
