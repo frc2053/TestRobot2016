@@ -62,9 +62,6 @@ void Robot::RobotInit() {
 	pdp = new PowerDistributionPanel();
 	Robot::driveBaseSubsystem->imuRobot->ZeroYaw();
 
-	NetworkTable::SetIPAddress("10.20.53.21");
-	NetworkTable::SetClientMode();
-	NetworkTable::Initialize();
     table = NetworkTable::GetTable("vision");
   }
 
