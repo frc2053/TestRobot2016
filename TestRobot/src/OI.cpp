@@ -7,6 +7,7 @@
 #include "Commands/RollerControl.h"
 #include "Commands/ClimbCommand.h"
 #include "Commands/AlignVerticalAndHorizontal.h"
+#include "Commands/AlignParallel.h"
 #include "Commands/GoalAlign.h"
 #include "Commands/ZeroYaw.h"
 #include "Commands/ShooterSolenoidControl.h"
@@ -14,6 +15,7 @@
 #include "Commands/ClimberGroup.h"
 #include "Commands/ClimberSolenoidControl.h"
 #include "Commands/ClimbGroupRetract.h"
+#include "Commands/AlignCenter.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -41,8 +43,8 @@ OI::OI() {
     button2Select->WhenPressed(new ClimbCommand(-1, 0));
     button2Select->WhenReleased(new ClimbCommand(0, 0));
 
-    //button1LeftBumper->WhenPressed(new AlignVerticalAndHorizontal(0));
-    button1LeftBumper->WhenPressed(new GoalAlign(0));
+    button1LeftBumper->WhenPressed(new AlignCenter());
+    //button1LeftBumper->WhenPressed(new GoalAlign(0));
 
     SmartDashboard::PutData("ZeroYaw", new ZeroYaw());
 }
