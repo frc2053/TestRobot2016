@@ -3,7 +3,6 @@
 
 #include "Commands/Command.h"
 #include "../Robot.h"
-#include <chrono>
 
 class AlignCenter: public Command
 {
@@ -23,9 +22,6 @@ private:
 	const int TARGET = 0;
 	bool isDone;
 	float XAxis, YAxis, RotAxis;
-	//std::chrono::high_resolution_clock::time_point previous;
-	//std::chrono::high_resolution_clock::time_point previous2;
-	//std::chrono::high_resolution_clock::time_point previous3;
 };
 
 #endif

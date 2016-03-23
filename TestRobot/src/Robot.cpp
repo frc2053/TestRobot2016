@@ -18,7 +18,6 @@ std::shared_ptr<LEDSubsystem> Robot::ledSubsystem;
 std::shared_ptr<VisionClass> Robot::visionClass;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<NetworkTable> Robot::table;
-std::shared_ptr<PIDController> Robot::visionAlignPID;
 PowerDistributionPanel* pdp;
 Task* visionTask;
 
