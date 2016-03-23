@@ -27,6 +27,7 @@ public:
     static std::shared_ptr<LEDSubsystem> ledSubsystem;
     static std::shared_ptr<VisionClass> visionClass;
     static std::shared_ptr<NetworkTable> table;
+    static std::shared_ptr<PIDController> visionAlignPID;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();

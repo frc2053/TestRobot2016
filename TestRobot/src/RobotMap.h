@@ -12,6 +12,8 @@
 #ifndef ROBOTMAP_H
 #define ROBOTMAP_H
 #include "WPILib.h"
+#include "pid/DummyPIDOutput.h"
+#include "pid/DummyPIDSource.h"
 
 class RobotMap {
 public:
@@ -40,6 +42,9 @@ public:
 
 	static std::shared_ptr<CANTalon> defenseSubsystemTalon;
 
+	static std::shared_ptr<PIDController> visionAlignPID;
+	static DummyPIDOutput* dummypidoutput;
+	static DummyPIDSource* dummypidsource;
 	static void init();
 };
 #endif

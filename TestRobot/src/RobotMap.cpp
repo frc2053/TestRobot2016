@@ -24,6 +24,9 @@ std::shared_ptr<DoubleSolenoid> RobotMap::climberSubsystemclimbSolenoid;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemGreenLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemRedLED;
 std::shared_ptr<DigitalOutput> RobotMap::ledSubsystemBlueLED;
+std::shared_ptr<PIDController> RobotMap::visionAlignPID;
+DummyPIDOutput* RobotMap::dummypidoutput;
+DummyPIDSource* RobotMap::dummypidsource;
 
 std::shared_ptr<CANTalon> RobotMap::defenseSubsystemTalon;
 void RobotMap::init() {
@@ -81,6 +84,8 @@ void RobotMap::init() {
     ledSubsystemGreenLED.reset(new DigitalOutput(1));
     ledSubsystemRedLED.reset(new DigitalOutput(2));
     ledSubsystemBlueLED.reset(new DigitalOutput(3));
+
+    visionAlignPID.reset(new PIDController(.2, 0, 0, dummypidsource, dummypidoutput));
 
     defenseSubsystemTalon.reset(new CANTalon(10));
 }
