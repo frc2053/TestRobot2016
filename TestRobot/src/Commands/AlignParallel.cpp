@@ -114,12 +114,12 @@ void AlignParallel::Execute()
 	std::cout << "centerX: " << centerX << std::endl;
 	std::cout << "toleranceX: " << toleranceX << std::endl;
 
-	if(targetX >= (centerX + toleranceX)) {
+	if(distanceToCenter >= (0 + toleraceX)) {
 		inToleranceX = false;
 		std::cout << "bot is too far right!" << std::endl;
 		//Robot::driveBaseSubsystem->MecanumDrive(speedX, 0, calrot, adjyaw);
 	}
-	if(targetX <= (centerX - toleranceX)) {
+	if(distanceToCenter <= (0 - toleranceX)) {
 		inToleranceX = false;
 		std::cout << "bot is too far left!" << std::endl;
 		speedX = speedX * -1;
