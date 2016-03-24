@@ -16,7 +16,7 @@ public:
 	bool isDone;
 	int targetX;
 	bool inToleranceX;
-	const int toleranceX = 6;
+	const int toleranceX = 10;
 	const int centerX = 160; //pixels
 	int distanceToCenter = 0;
 	float speedX = 0;

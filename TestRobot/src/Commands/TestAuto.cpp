@@ -6,14 +6,15 @@
 #include "ShooterSolenoidControl.h"
 #include "GoalAlign.h"
 #include "AlignVerticalAndHorizontal.h"
+#include "AlignCenter.h"
+#include "AlignParallel.h"
 
 TestAuto::TestAuto()
 {
 	//printf("constructor for test auto!\n");
-	AddSequential(new AlignVerticalAndHorizontal(0));
-	AddSequential(new GoalAlign(0));
-	AddSequential(new ShooterControl(-3200, .2));
-	AddSequential(new ShooterControl(6000, 1));
+	AddSequential(new AlignParallel(0, 135));
+	//AddSequential(new AlignCenter());
+	AddSequential(new ShooterControl(6000, 1.3));
 	AddSequential(new ShooterSolenoidControl());
 	//printf("after sequential for test auto!\n");
 }

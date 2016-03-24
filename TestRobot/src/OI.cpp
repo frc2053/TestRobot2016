@@ -16,6 +16,7 @@
 #include "Commands/ClimberSolenoidControl.h"
 #include "Commands/ClimbGroupRetract.h"
 #include "Commands/AlignCenter.h"
+#include "Commands/TestAuto.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -43,7 +44,7 @@ OI::OI() {
     button2Select->WhenPressed(new ClimbCommand(-1, 0));
     button2Select->WhenReleased(new ClimbCommand(0, 0));
 
-    button1LeftBumper->WhenPressed(new AlignCenter());
+    button1LeftBumper->WhenPressed(new TestAuto());
     //button1LeftBumper->WhenPressed(new GoalAlign(0));
 
     SmartDashboard::PutData("ZeroYaw", new ZeroYaw());

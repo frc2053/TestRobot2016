@@ -37,7 +37,7 @@ void AlignCenter::Execute()
 	std::cout << "speedRot: " << speedRot << std::endl;
 
 	if(abs(XAxis) > .2 || abs(YAxis) > .2 || abs(RotAxis) > .2) {
-		isDone = true;
+		//isDone = true;
 		std::cout << "Override!" << std::endl;
 	}
 
@@ -47,6 +47,9 @@ void AlignCenter::Execute()
 	}
 
 	Robot::driveBaseSubsystem->MecanumDrive(0, 0, speedRot, adjyaw);
+	Wait(0.1 + (0.0011 * abs(distanceToCenter)));
+	Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, adjyaw);
+	Wait(.08);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -70,7 +73,7 @@ void AlignCenter::Interrupted()
 
 float AlignCenter::CalculateSpeedValue(int toCenter) {
 	float returnedSpeed = 0;
-	if(toCenter > 200) {
+	/*if(toCenter > 200) {
 		returnedSpeed = -.25;
 	}
 	else if(toCenter > 100) {
@@ -97,6 +100,18 @@ float AlignCenter::CalculateSpeedValue(int toCenter) {
 	}
 
 	if(abs(toCenter) < 10) {
+		returnedSpeed = 0;
+	}*/
+
+	if(toCenter >= 15) {
+		returnedSpeed = -.25;
+	}
+
+	if(toCenter <= -15) {
+		returnedSpeed = .25;
+	}
+
+	if(abs(toCenter) < 15) {
 		returnedSpeed = 0;
 	}
 
