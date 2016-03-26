@@ -97,15 +97,22 @@ void AlignParallel::Execute()
 		printf("bot is too close in y!\n");
 		std::cout << "bot distance: " << distanceY << std::endl;
 		inToleranceY = false;
-		//Robot::driveBaseSubsystem->MecanumDrive(0, speedY, calrot, adjyaw);
+		
 	}
 	else if(tooFar) {
 		printf("bol is too far in y!\n");
 		std::cout << "bot distance: " << distanceY << std::endl;
 		inToleranceY = false;
 		speedY = speedY * -1;
-		//Robot::driveBaseSubsystem->MecanumDrive(0, -speedY, calrot, adjyaw);
+	
 	}
+	
+	if(inToleranceY) {
+		printf("inToleranceY is true\n");
+		speedY = 0;
+	}
+	
+	
 
 	//targetX = targetX - 2;
 	inToleranceX = true;
@@ -114,20 +121,21 @@ void AlignParallel::Execute()
 	std::cout << "centerX: " << centerX << std::endl;
 	std::cout << "toleranceX: " << toleranceX << std::endl;
 
-	if(distanceToCenter >= (0 + toleraceX)) {
+	if(distanceToCenter >= (0 + toleranceX)) {
 		inToleranceX = false;
 		std::cout << "bot is too far right!" << std::endl;
-		//Robot::driveBaseSubsystem->MecanumDrive(speedX, 0, calrot, adjyaw);
+	
 	}
 	if(distanceToCenter <= (0 - toleranceX)) {
 		inToleranceX = false;
 		std::cout << "bot is too far left!" << std::endl;
 		speedX = speedX * -1;
-		//Robot::driveBaseSubsystem->MecanumDrive(-speedX, 0, calrot, adjyaw);
+
 	}
 
 	if(inToleranceX == true) {
 		std::cout << "inToleranceX!" << std::endl;
+		speedX = 0;
 	}
 
 	std::cout << "speedX: " << speedX << std::endl;
