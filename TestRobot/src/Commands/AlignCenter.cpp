@@ -46,10 +46,13 @@ void AlignCenter::Execute()
 		isDone = true;
 	}
 
+	Wait(.5);
+	distanceToCenter = Robot::table->GetNumber("center", 0.0);
+	speedRot = AlignCenter::CalculateSpeedValue(distanceToCenter);
+	adjyaw = Robot::driveBaseSubsystem->getAdjYaw();
 	Robot::driveBaseSubsystem->MecanumDrive(0, 0, speedRot, adjyaw);
 	Wait(0.1 + (0.0011 * abs(distanceToCenter)));
 	Robot::driveBaseSubsystem->MecanumDrive(0, 0, 0, adjyaw);
-	Wait(.08);
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -111,7 +114,7 @@ float AlignCenter::CalculateSpeedValue(int toCenter) {
 		returnedSpeed = .25;
 	}
 
-	if(abs(toCenter) < 15) {
+	if(abs(toCenter) < 3) {
 		returnedSpeed = 0;
 	}
 
