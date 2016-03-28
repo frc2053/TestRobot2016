@@ -17,6 +17,8 @@
 #include "Commands/ClimbGroupRetract.h"
 #include "Commands/AlignCenter.h"
 #include "Commands/TestAuto.h"
+#include "Commands/SlowShooterControl.h"
+#include "Commands/LowGoal.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -29,6 +31,7 @@ OI::OI() {
     button2Start.reset(new JoystickButton(gunnerJoystick.get(), 8));
     button2Select.reset(new JoystickButton(gunnerJoystick.get(), 7));
     button2LeftBumper.reset(new JoystickButton(gunnerJoystick.get(), 5));
+    button2RightBumper.reset(new JoystickButton(gunnerJoystick.get(), 6));
 
     button1LeftBumper.reset(new JoystickButton(driverJoystick.get(), 5));
 
@@ -36,7 +39,11 @@ OI::OI() {
     button2X->WhenPressed(new ClimberGroup());
     button2B->WhenPressed(new ClimberSolenoidControl(false));
     button2Y->WhenPressed(new ClimberSolenoidControl(true));
-    button2LeftBumper->WhenPressed(new ClimbGroupRetract());
+    //button2LeftBumper->WhenPressed(new SlowShooterControl(2000, 0));
+    //button2LeftBumper->WhenReleased(new SlowShooterControl(0, 0));
+    button2RightBumper->WhenPressed(new SlowShooterControl(3000, .4));
+    //button2RightBumper->WhenReleased(new SlowShooterControl(0, 0));
+
 
     button2Start->WhenPressed(new ClimbCommand(1, 0));
     button2Start->WhenReleased(new ClimbCommand(0, 0));
