@@ -19,6 +19,7 @@
 #include "Commands/TestAuto.h"
 #include "Commands/SlowShooterControl.h"
 #include "Commands/LowGoal.h"
+#include "Commands/DefenseManipulator.h"
 
 OI::OI() {
 	driverJoystick.reset(new Joystick(0));
@@ -36,12 +37,14 @@ OI::OI() {
     button1LeftBumper.reset(new JoystickButton(driverJoystick.get(), 5));
 
     button2A->WhenPressed(new ShooterSolenoidControl());
-    button2X->WhenPressed(new ClimberGroup());
+    button2X->WhenPressed(new SlowShooterControl(3000, .4));
     button2B->WhenPressed(new ClimberSolenoidControl(false));
     button2Y->WhenPressed(new ClimberSolenoidControl(true));
     //button2LeftBumper->WhenPressed(new SlowShooterControl(2000, 0));
-    //button2LeftBumper->WhenReleased(new SlowShooterControl(0, 0));
-    button2RightBumper->WhenPressed(new SlowShooterControl(3000, .4));
+    button2LeftBumper->WhenPressed(new DefenseManipulator(-1, 0));
+    button2LeftBumper->WhenReleased(new DefenseManipulator(0, 0));
+    button2RightBumper->WhenPressed(new DefenseManipulator(1, 0));
+    button2RightBumper->WhenReleased(new DefenseManipulator(0, 0));
     //button2RightBumper->WhenReleased(new SlowShooterControl(0, 0));
 
 
