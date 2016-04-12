@@ -101,6 +101,7 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	std::cout << "Distance: " << Robot::table->GetNumber("distance", 0.0) << std::endl;
 	//SmartDashboard::PutNumber("Front Left Amperage", pdp->GetCurrent(3));
 	//SmartDashboard::PutNumber("Front Right Amperage", pdp->GetCurrent(14));
 	//SmartDashboard::PutNumber("Back Left Amperage", pdp->GetCurrent(0));

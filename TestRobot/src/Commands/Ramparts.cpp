@@ -4,6 +4,6 @@
 
 Ramparts::Ramparts()
 {
-	AddParallel(new DriveCommandAuto(0, -1, 0, 2.7, 0));
+	AddParallel(new DriveCommandAuto(0, -1, 0, 2.9, 0));
 	AddSequential(new ShooterControl(-1200, 2));
 }

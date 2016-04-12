@@ -37,7 +37,7 @@ void AlignCenter::Execute()
 	std::cout << "speedRot: " << speedRot << std::endl;
 
 	if(abs(XAxis) > .2 || abs(YAxis) > .2 || abs(RotAxis) > .2) {
-		//isDone = true;
+		isDone = true;
 		std::cout << "Override!" << std::endl;
 	}
 

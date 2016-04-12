@@ -57,7 +57,7 @@ void AlignParallel::Execute()
 	targetX = Robot::table->GetNumber("targetX", 0.0);
 	//std::cout << "TargetX: " << targetX << std::endl;
 
-	if(XAxis > .2 || YAxis > .2 || RotAxis > .2) {
+	if(abs(XAxis) > .2 || abs(YAxis) > .2 || abs(RotAxis) > .2) {
 		isDone = true;
 	}
 

@@ -22,6 +22,8 @@ DriveCommandAuto::DriveCommandAuto(float side, float fow, float rot, float time,
 // Called just before this Command runs the first time
 void DriveCommandAuto::Initialize()
 {
+	timer->Reset();
+	timer->Start();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -49,6 +51,7 @@ bool DriveCommandAuto::IsFinished()
 // Called once after isFinished returns true
 void DriveCommandAuto::End()
 {
+	timer.reset(new Timer());
 	Robot::driveBaseSubsystem->MecanumDrive(0,0,0,0);
 }
 

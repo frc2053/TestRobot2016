@@ -13,10 +13,10 @@
 TestAuto::TestAuto()
 {
 	//printf("constructor for test auto!\n");
-	AddSequential(new AlignParallel(0, 145));
+	AddSequential(new AlignParallel(0, 110));
 	AddSequential(new AlignCenter());
-	AddSequential(new RotateToAngleAuto(4));
-	AddSequential(new ShooterControl(6000, 1.3));
+	AddSequential(new RotateToAngleAuto(0));
+	AddSequential(new ShooterControl(6000, 4));
 	AddSequential(new ShooterSolenoidControl());
 	//printf("after sequential for test auto!\n");
 }

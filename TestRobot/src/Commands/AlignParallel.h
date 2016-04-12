@@ -28,7 +28,7 @@ public:
 	float distanceY = 0;
 	float calrot = 0;
 	float adjyaw = 0;
-	const int toleranceY = 6; //inches
+	const int toleranceY = 3; //inches
 	int distanceTarget = 0;
 	bool inToleranceY;
 };

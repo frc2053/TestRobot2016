@@ -4,6 +4,6 @@
 
 RockWall::RockWall()
 {
-	AddParallel(new DriveCommandAuto(0, -.8, 0, 2.4, 0));
+	AddParallel(new DriveCommandAuto(0, -1, 0, 2.4, 0));
 	AddSequential(new ShooterControl(-1200, 2));
 }
